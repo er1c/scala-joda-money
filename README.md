@@ -9,5 +9,6 @@ Simply added the plugin to the joda-money pom.xml:
 </plugin>
 
 Then, executed mvn scalagen:main to generate src/main/scala/
-
 That directory tree is copied, as well as joda-money/src/main/resources/org/joda/money/MoneyData.csv
+
+Then, executed mvn scalagen:test to generate src/test/scala

@@ -1,0 +1,11 @@
+.idea
+target/
+shared/target
+jvm/target
+js/target
+project/target
+project/project/target
+shared/src/test/scala/target
+jvm/src/test/scala/target
+js/src/test/scala/target
+test-output
