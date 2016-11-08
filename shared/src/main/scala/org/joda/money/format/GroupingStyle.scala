@@ -4,14 +4,9 @@ package org.joda.money.format
 import scala.collection.JavaConversions._
 
 object GroupingStyle extends Enumeration {
+  type GroupingStyle = Value
 
-  val NONE = new GroupingStyle()
-
-  val FULL = new GroupingStyle()
-
-  val BEFORE_DECIMAL_POINT = new GroupingStyle()
-
-  class GroupingStyle extends Val
+  val NONE, FULL, BEFORE_DECIMAL_POINT = Value
 
   implicit def convertValue(v: Value): GroupingStyle = v.asInstanceOf[GroupingStyle]
 }

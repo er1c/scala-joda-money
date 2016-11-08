@@ -7,8 +7,6 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 import java.util.Arrays
 import java.util.Iterator
-import org.joda.convert.FromString
-import org.joda.convert.ToString
 import Money._
 //remove if not needed
 import scala.collection.JavaConversions._
@@ -54,8 +52,7 @@ object Money {
     MoneyUtils.checkNotNull(currency, "CurrencyUnit must not be null")
     MoneyUtils.checkNotNull(amount, "Amount must not be null")
     MoneyUtils.checkNotNull(roundingMode, "RoundingMode must not be null")
-    amount = amount.setScale(currency.getDecimalPlaces, roundingMode)
-    new Money(BigMoney.of(currency, amount))
+    new Money(BigMoney.of(currency, amount.setScale(currency.getDecimalPlaces, roundingMode)))
   }
 
   /**
@@ -287,7 +284,6 @@ object Money {
    * @throws IllegalArgumentException if the string is malformed
    * @throws ArithmeticException if the amount is too large
    */
-  @FromString
   def parse(moneyStr: String): Money = Money.of(BigMoney.parse(moneyStr))
 
   /**
@@ -337,7 +333,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
   /**
    * The money, not null.
    */
-  private val money = null
+  private var money: BigMoney = null
 
   /**
    * Constructor, creating a new monetary instance.
@@ -346,8 +342,8 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    */
   def this(money: BigMoney) {
     this()
-    assert(money != null) : "Joda-Money bug: BigMoney must not be null"
-    assert(money.isCurrencyScale) : "Joda-Money bug: Only currency scale is valid for Money"
+    assert(money != null, "Joda-Money bug: BigMoney must not be null")
+    assert(money.isCurrencyScale, "Joda-Money bug: Only currency scale is valid for Money")
     this.money = money
   }
 
@@ -376,7 +372,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @param newInstance  the new money to use, not null
    * @return the new instance, never null
    */
-  private def with(newInstance: BigMoney): Money = {
+  private def `with`(newInstance: BigMoney): Money = {
     if (money == newInstance) {
       return this
     }
@@ -423,7 +419,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @throws ArithmeticException if the rounding fails
    */
   def withCurrencyUnit(currency: CurrencyUnit, roundingMode: RoundingMode): Money = {
-    with(money.withCurrencyUnit(currency).withCurrencyScale(roundingMode))
+    `with`(money.withCurrencyUnit(currency).withCurrencyScale(roundingMode))
   }
 
   /**
@@ -608,7 +604,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return the new instance with the input amount set, never null
    */
   def withAmount(amount: BigDecimal, roundingMode: RoundingMode): Money = {
-    with(money.withAmount(amount).withCurrencyScale(roundingMode))
+    `with`(money.withAmount(amount).withCurrencyScale(roundingMode))
   }
 
   /**
@@ -656,7 +652,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return the new instance with the input amount set, never null
    */
   def withAmount(amount: Double, roundingMode: RoundingMode): Money = {
-    with(money.withAmount(amount).withCurrencyScale(roundingMode))
+    `with`(money.withAmount(amount).withCurrencyScale(roundingMode))
   }
 
   /**
@@ -671,7 +667,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return the new instance with the input amounts added, never null
    * @throws CurrencyMismatchException if the currencies differ
    */
-  def plus(moniesToAdd: java.lang.Iterable[Money]): Money = with(money.plus(moniesToAdd))
+  def plus(moniesToAdd: java.lang.Iterable[Money]): Money = `with`(money.plus(moniesToAdd))
 
   /**
    * Returns a copy of this monetary value with the amount added.
@@ -688,7 +684,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return the new instance with the input amount added, never null
    * @throws CurrencyMismatchException if the currencies differ
    */
-  def plus(moneyToAdd: Money): Money = with(money.plus(moneyToAdd))
+  def plus(moneyToAdd: Money): Money = `with`(money.plus(moneyToAdd))
 
   /**
    * Returns a copy of this monetary value with the amount added.
@@ -721,7 +717,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return the new instance with the input amount added, never null
    */
   def plus(amountToAdd: BigDecimal, roundingMode: RoundingMode): Money = {
-    with(money.plusRetainScale(amountToAdd, roundingMode))
+    `with`(money.plusRetainScale(amountToAdd, roundingMode))
   }
 
   /**
@@ -767,7 +763,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return the new instance with the input amount added, never null
    */
   def plus(amountToAdd: Double, roundingMode: RoundingMode): Money = {
-    with(money.plusRetainScale(amountToAdd, roundingMode))
+    `with`(money.plusRetainScale(amountToAdd, roundingMode))
   }
 
   /**
@@ -781,7 +777,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @param amountToAdd  the monetary value to add, not null
    * @return the new instance with the input amount added, never null
    */
-  def plusMajor(amountToAdd: Long): Money = with(money.plusMajor(amountToAdd))
+  def plusMajor(amountToAdd: Long): Money = `with`(money.plusMajor(amountToAdd))
 
   /**
    * Returns a copy of this monetary value with the amount in minor units added.
@@ -794,7 +790,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @param amountToAdd  the monetary value to add, not null
    * @return the new instance with the input amount added, never null
    */
-  def plusMinor(amountToAdd: Long): Money = with(money.plusMinor(amountToAdd))
+  def plusMinor(amountToAdd: Long): Money = `with`(money.plusMinor(amountToAdd))
 
   /**
    * Returns a copy of this monetary value with a collection of monetary amounts subtracted.
@@ -808,7 +804,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return the new instance with the input amounts subtracted, never null
    * @throws CurrencyMismatchException if the currencies differ
    */
-  def minus(moniesToSubtract: java.lang.Iterable[Money]): Money = with(money.minus(moniesToSubtract))
+  def minus(moniesToSubtract: java.lang.Iterable[Money]): Money = `with`(money.minus(moniesToSubtract))
 
   /**
    * Returns a copy of this monetary value with the amount subtracted.
@@ -825,7 +821,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return the new instance with the input amount subtracted, never null
    * @throws CurrencyMismatchException if the currencies differ
    */
-  def minus(moneyToSubtract: Money): Money = with(money.minus(moneyToSubtract))
+  def minus(moneyToSubtract: Money): Money = `with`(money.minus(moneyToSubtract))
 
   /**
    * Returns a copy of this monetary value with the amount subtracted.
@@ -858,7 +854,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return the new instance with the input amount subtracted, never null
    */
   def minus(amountToSubtract: BigDecimal, roundingMode: RoundingMode): Money = {
-    with(money.minusRetainScale(amountToSubtract, roundingMode))
+    `with`(money.minusRetainScale(amountToSubtract, roundingMode))
   }
 
   /**
@@ -904,7 +900,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return the new instance with the input amount subtracted, never null
    */
   def minus(amountToSubtract: Double, roundingMode: RoundingMode): Money = {
-    with(money.minusRetainScale(amountToSubtract, roundingMode))
+    `with`(money.minusRetainScale(amountToSubtract, roundingMode))
   }
 
   /**
@@ -919,7 +915,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return the new instance with the input amount subtracted, never null
    */
   def minusMajor(amountToSubtract: Long): Money = {
-    with(money.minusMajor(amountToSubtract))
+    `with`(money.minusMajor(amountToSubtract))
   }
 
   /**
@@ -934,7 +930,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return the new instance with the input amount subtracted, never null
    */
   def minusMinor(amountToSubtract: Long): Money = {
-    with(money.minusMinor(amountToSubtract))
+    `with`(money.minusMinor(amountToSubtract))
   }
 
   /**
@@ -951,7 +947,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @throws ArithmeticException if the rounding fails
    */
   def multipliedBy(valueToMultiplyBy: BigDecimal, roundingMode: RoundingMode): Money = {
-    with(money.multiplyRetainScale(valueToMultiplyBy, roundingMode))
+    `with`(money.multiplyRetainScale(valueToMultiplyBy, roundingMode))
   }
 
   /**
@@ -974,7 +970,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @throws ArithmeticException if the rounding fails
    */
   def multipliedBy(valueToMultiplyBy: Double, roundingMode: RoundingMode): Money = {
-    with(money.multiplyRetainScale(valueToMultiplyBy, roundingMode))
+    `with`(money.multiplyRetainScale(valueToMultiplyBy, roundingMode))
   }
 
   /**
@@ -988,7 +984,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return the new multiplied instance, never null
    */
   def multipliedBy(valueToMultiplyBy: Long): Money = {
-    with(money.multipliedBy(valueToMultiplyBy))
+    `with`(money.multipliedBy(valueToMultiplyBy))
   }
 
   /**
@@ -1006,7 +1002,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @throws ArithmeticException if the rounding fails
    */
   def dividedBy(valueToDivideBy: BigDecimal, roundingMode: RoundingMode): Money = {
-    with(money.dividedBy(valueToDivideBy, roundingMode))
+    `with`(money.dividedBy(valueToDivideBy, roundingMode))
   }
 
   /**
@@ -1030,7 +1026,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @throws ArithmeticException if the rounding fails
    */
   def dividedBy(valueToDivideBy: Double, roundingMode: RoundingMode): Money = {
-    with(money.dividedBy(valueToDivideBy, roundingMode))
+    `with`(money.dividedBy(valueToDivideBy, roundingMode))
   }
 
   /**
@@ -1048,7 +1044,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @throws ArithmeticException if the rounding fails
    */
   def dividedBy(valueToDivideBy: Long, roundingMode: RoundingMode): Money = {
-    with(money.dividedBy(valueToDivideBy, roundingMode))
+    `with`(money.dividedBy(valueToDivideBy, roundingMode))
   }
 
   /**
@@ -1058,7 +1054,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    *
    * @return the new instance with the amount negated, never null
    */
-  def negated(): Money = with(money.negated())
+  def negated(): Money = `with`(money.negated())
 
   /**
    * Returns a copy of this monetary value with a positive amount.
@@ -1091,7 +1087,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @throws ArithmeticException if the rounding fails
    */
   def rounded(scale: Int, roundingMode: RoundingMode): Money = {
-    with(money.rounded(scale, roundingMode))
+    `with`(money.rounded(scale, roundingMode))
   }
 
   /**
@@ -1110,7 +1106,7 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @throws ArithmeticException if the rounding fails
    */
   def convertedTo(currency: CurrencyUnit, conversionMultipler: BigDecimal, roundingMode: RoundingMode): Money = {
-    with(money.convertedTo(currency, conversionMultipler).withCurrencyScale(roundingMode))
+    `with`(money.convertedTo(currency, conversionMultipler).withCurrencyScale(roundingMode))
   }
 
   /**
@@ -1192,14 +1188,10 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    * @return true if this instance equals the other instance
    */
   override def equals(other: Any): Boolean = {
-    if (this == other) {
-      return true
+    other match {
+      case otherMoney: Money => money == otherMoney.money
+      case _ => false
     }
-    if (other.isInstanceOf[Money]) {
-      val otherMoney = other.asInstanceOf[Money]
-      return money == otherMoney.money
-    }
-    false
   }
 
   /**
@@ -1217,6 +1209,5 @@ class Money private () extends BigMoneyProvider with Comparable[BigMoneyProvider
    *
    * @return the string representation of this monetary value, never null
    */
-  @ToString
   override def toString(): String = money.toString
 }

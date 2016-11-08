@@ -2,6 +2,7 @@ package org.joda.money.format
 
 import java.io.Serializable
 import java.lang.reflect.Method
+import java.lang.{Integer, Character}
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.text.NumberFormat
@@ -9,7 +10,7 @@ import java.util.Locale
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentMap
 import MoneyAmountStyle._
-import scala.reflect.{BeanProperty, BooleanBeanProperty}
+import scala.beans.{BeanProperty, BooleanBeanProperty}
 //remove if not needed
 import scala.collection.JavaConversions._
 
@@ -67,14 +68,14 @@ object MoneyAmountStyle {
    * A style that will be filled in with localized values using the locale of the formatter.
    * Grouping is enabled. Forced decimal point is disabled.
    */
-  val LOCALIZED_GROUPING = new MoneyAmountStyle(-1, -1, -1, -1, GroupingStyle.FULL, -1, -1, -1, false, 
+  val LOCALIZED_GROUPING = new MoneyAmountStyle(-1.toChar, -1.toChar, -1.toChar, -1.toChar, GroupingStyle.FULL, -1.toChar, -1, -1, false, 
     false)
 
   /**
    * A style that will be filled in with localized values using the locale of the formatter.
    * Grouping is disabled. Forced decimal point is disabled.
    */
-  val LOCALIZED_NO_GROUPING = new MoneyAmountStyle(-1, -1, -1, -1, GroupingStyle.NONE, -1, -1, -1, false, 
+  val LOCALIZED_NO_GROUPING = new MoneyAmountStyle(-1.toChar, -1.toChar, -1.toChar, -1.toChar, GroupingStyle.NONE, -1.toChar, -1, -1, false, 
     false)
 
   /**
@@ -109,13 +110,7 @@ object MoneyAmountStyle {
   private def getLocalizedStyle(locale: Locale): MoneyAmountStyle = {
     var protoStyle = LOCALIZED_CACHE.get(locale)
     if (protoStyle == null) {
-      var symbols: DecimalFormatSymbols = null
-      try {
-        val method = classOf[DecimalFormatSymbols].getMethod("getInstance", Array(classOf[Locale]))
-        symbols = method.invoke(null, Array(locale)).asInstanceOf[DecimalFormatSymbols]
-      } catch {
-        case ex: Exception => symbols = new DecimalFormatSymbols(locale)
-      }
+      var symbols: DecimalFormatSymbols = DecimalFormatSymbols.getInstance(locale)
       val format = NumberFormat.getCurrencyInstance(locale)
       val size = (if (format.isInstanceOf[DecimalFormat]) format.asInstanceOf[DecimalFormat].getGroupingSize else 3)
       protoStyle = new MoneyAmountStyle(symbols.getZeroDigit, '+', symbols.getMinusSign, symbols.getMonetaryDecimalSeparator, 
@@ -151,12 +146,12 @@ object MoneyAmountStyle {
  * This class is immutable and thread-safe.
  */
 @SerialVersionUID(1L)
-class MoneyAmountStyle private (val zeroCharacter: Int, 
-    val positiveCharacter: Int, 
-    val negativeCharacter: Int, 
-    val decimalPointCharacter: Int, 
-    @BeanProperty val groupingStyle: GroupingStyle, 
-    val groupingCharacter: Int, 
+class MoneyAmountStyle private (val zeroCharacter: Character, 
+    val positiveCharacter: Character, 
+    val negativeCharacter: Character, 
+    val decimalPointCharacter: Character, 
+    @BeanProperty val groupingStyle: GroupingStyle.GroupingStyle, 
+    val groupingCharacter: Character, 
     val groupingSize: Int, 
     val extendedGroupingSize: Int, 
     val forceDecimalPoint: Boolean, 
@@ -220,8 +215,8 @@ class MoneyAmountStyle private (val zeroCharacter: Int,
    *
    * @return the zero character, null if to be determined by locale
    */
-  def getZeroCharacter(): java.lang.Character = {
-    if (zeroCharacter < 0) null else zeroCharacter.toChar
+  def getZeroCharacter(): Character = {
+    if (zeroCharacter < 0) null else zeroCharacter
   }
 
   /**
@@ -237,8 +232,8 @@ class MoneyAmountStyle private (val zeroCharacter: Int,
    * @param zeroCharacter  the zero character, null if to be determined by locale
    * @return the new instance for chaining, never null
    */
-  def withZeroCharacter(zeroCharacter: java.lang.Character): MoneyAmountStyle = {
-    val zeroVal = (if (zeroCharacter == null) -1 else zeroCharacter)
+  def withZeroCharacter(zeroCharacter: Character): MoneyAmountStyle = {
+    val zeroVal: Character = (if (zeroCharacter == null) -1.toChar else zeroCharacter)
     if (zeroVal == this.zeroCharacter) {
       return this
     }
@@ -253,7 +248,7 @@ class MoneyAmountStyle private (val zeroCharacter: Int,
    *
    * @return the format for positive amounts, null if to be determined by locale
    */
-  def getPositiveSignCharacter(): java.lang.Character = {
+  def getPositiveSignCharacter(): Character = {
     if (positiveCharacter < 0) null else positiveCharacter.toChar
   }
 
@@ -265,8 +260,8 @@ class MoneyAmountStyle private (val zeroCharacter: Int,
    * @param positiveCharacter  the positive character, null if to be determined by locale
    * @return the new instance for chaining, never null
    */
-  def withPositiveSignCharacter(positiveCharacter: java.lang.Character): MoneyAmountStyle = {
-    val positiveVal = (if (positiveCharacter == null) -1 else positiveCharacter)
+  def withPositiveSignCharacter(positiveCharacter: Character): MoneyAmountStyle = {
+    val positiveVal: Character = (if (positiveCharacter == null) -1.toChar else positiveCharacter)
     if (positiveVal == this.positiveCharacter) {
       return this
     }
@@ -281,8 +276,8 @@ class MoneyAmountStyle private (val zeroCharacter: Int,
    *
    * @return the format for negative amounts, null if to be determined by locale
    */
-  def getNegativeSignCharacter(): java.lang.Character = {
-    if (negativeCharacter < 0) null else negativeCharacter.toChar
+  def getNegativeSignCharacter(): Character = {
+    if (negativeCharacter < 0) null else negativeCharacter
   }
 
   /**
@@ -293,8 +288,8 @@ class MoneyAmountStyle private (val zeroCharacter: Int,
    * @param negativeCharacter  the negative character, null if to be determined by locale
    * @return the new instance for chaining, never null
    */
-  def withNegativeSignCharacter(negativeCharacter: java.lang.Character): MoneyAmountStyle = {
-    val negativeVal = (if (negativeCharacter == null) -1 else negativeCharacter)
+  def withNegativeSignCharacter(negativeCharacter: Character): MoneyAmountStyle = {
+    val negativeVal: Character = (if (negativeCharacter == null) -1.toChar else negativeCharacter)
     if (negativeVal == this.negativeCharacter) {
       return this
     }
@@ -307,7 +302,7 @@ class MoneyAmountStyle private (val zeroCharacter: Int,
    *
    * @return the decimal point character, null if to be determined by locale
    */
-  def getDecimalPointCharacter(): java.lang.Character = {
+  def getDecimalPointCharacter(): Character = {
     if (decimalPointCharacter < 0) null else decimalPointCharacter.toChar
   }
 
@@ -319,8 +314,8 @@ class MoneyAmountStyle private (val zeroCharacter: Int,
    * @param decimalPointCharacter  the decimal point character, null if to be determined by locale
    * @return the new instance for chaining, never null
    */
-  def withDecimalPointCharacter(decimalPointCharacter: java.lang.Character): MoneyAmountStyle = {
-    val dpVal = (if (decimalPointCharacter == null) -1 else decimalPointCharacter)
+  def withDecimalPointCharacter(decimalPointCharacter: Character): MoneyAmountStyle = {
+    val dpVal: Character = (if (decimalPointCharacter == null) -1.toChar else decimalPointCharacter)
     if (dpVal == this.decimalPointCharacter) {
       return this
     }
@@ -333,8 +328,8 @@ class MoneyAmountStyle private (val zeroCharacter: Int,
    *
    * @return the grouping character, null if to be determined by locale
    */
-  def getGroupingCharacter(): java.lang.Character = {
-    if (groupingCharacter < 0) null else groupingCharacter.toChar
+  def getGroupingCharacter(): Character = {
+    if (groupingCharacter < 0) null else groupingCharacter
   }
 
   /**
@@ -345,8 +340,8 @@ class MoneyAmountStyle private (val zeroCharacter: Int,
    * @param groupingCharacter  the grouping character, null if to be determined by locale
    * @return the new instance for chaining, never null
    */
-  def withGroupingCharacter(groupingCharacter: java.lang.Character): MoneyAmountStyle = {
-    val groupingVal = (if (groupingCharacter == null) -1 else groupingCharacter)
+  def withGroupingCharacter(groupingCharacter: Character): MoneyAmountStyle = {
+    val groupingVal: Character = (if (groupingCharacter == null) -1.toChar else groupingCharacter)
     if (groupingVal == this.groupingCharacter) {
       return this
     }
@@ -372,7 +367,7 @@ class MoneyAmountStyle private (val zeroCharacter: Int,
    * @throws IllegalArgumentException if the grouping size is zero or less
    */
   def withGroupingSize(groupingSize: java.lang.Integer): MoneyAmountStyle = {
-    val sizeVal = (if (groupingSize == null) -1 else groupingSize)
+    val sizeVal: java.lang.Integer = (if (groupingSize == null) -1 else groupingSize)
     if (groupingSize != null && sizeVal <= 0) {
       throw new IllegalArgumentException("Grouping size must be greater than zero")
     }
@@ -406,7 +401,7 @@ class MoneyAmountStyle private (val zeroCharacter: Int,
    * @throws IllegalArgumentException if the grouping size is zero or less
    */
   def withExtendedGroupingSize(extendedGroupingSize: java.lang.Integer): MoneyAmountStyle = {
-    val sizeVal = (if (extendedGroupingSize == null) -1 else extendedGroupingSize)
+    val sizeVal: Integer = (if (extendedGroupingSize == null) -1 else extendedGroupingSize)
     if (extendedGroupingSize != null && sizeVal < 0) {
       throw new IllegalArgumentException("Extended grouping size must not be negative")
     }
@@ -423,7 +418,7 @@ class MoneyAmountStyle private (val zeroCharacter: Int,
    * @param groupingStyle  the grouping style, not null
    * @return the new instance for chaining, never null
    */
-  def withGroupingStyle(groupingStyle: GroupingStyle): MoneyAmountStyle = {
+  def withGroupingStyle(groupingStyle: GroupingStyle.GroupingStyle): MoneyAmountStyle = {
     MoneyFormatter.checkNotNull(groupingStyle, "groupingStyle")
     if (this.groupingStyle == groupingStyle) {
       return this

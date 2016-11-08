@@ -37,7 +37,7 @@ class DefaultCurrencyUnitDataProvider extends CurrencyUnitDataProvider {
    *
    * @throws Exception if an error occurs
    */
-  protected override def registerCurrencies() {
+  def registerCurrencies() {
     loadCurrenciesFromFile("/org/joda/money/MoneyData.csv", true)
     loadCurrenciesFromFile("/org/joda/money/MoneyDataExtension.csv", false)
   }
@@ -60,8 +60,8 @@ class DefaultCurrencyUnitDataProvider extends CurrencyUnitDataProvider {
         return
       }
       val reader = new BufferedReader(new InputStreamReader(in, "UTF-8"))
-      var line: String = null
-      while ((line = reader.readLine()) != null) {
+      var line: String = reader.readLine()
+      while (line != null) {
         val matcher = REGEX_LINE.matcher(line)
         if (matcher.matches()) {
           val countryCodes = new ArrayList[String]()
@@ -79,6 +79,7 @@ class DefaultCurrencyUnitDataProvider extends CurrencyUnitDataProvider {
           val digits = Integer.parseInt(matcher.group(3))
           registerCurrency(currencyCode, numericCode, digits, countryCodes)
         }
+        line = reader.readLine()
       }
     } catch {
       case ex: Exception => {

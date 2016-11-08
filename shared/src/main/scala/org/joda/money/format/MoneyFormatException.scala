@@ -10,18 +10,7 @@ import scala.collection.JavaConversions._
  * This exception makes no guarantees about immutability or thread-safety.
  */
 @SerialVersionUID(87533576L)
-class MoneyFormatException(message: String) extends RuntimeException(message) {
-
-  /**
-   * Constructor taking a message and cause.
-   *
-   * @param message  the message
-   * @param cause  the exception cause
-   */
-  def this(message: String, cause: Throwable) {
-    super(message, cause)
-  }
-
+class MoneyFormatException(message: String, cause: Throwable = null) extends RuntimeException(message, cause) {
   /**
    * Checks if the cause of this exception was an IOException, and if so re-throws it
    * <p>

@@ -5,7 +5,7 @@ import java.text.ParsePosition
 import java.util.Locale
 import org.joda.money.BigMoney
 import org.joda.money.CurrencyUnit
-import scala.reflect.{BeanProperty, BooleanBeanProperty}
+import scala.beans.{BeanProperty, BooleanBeanProperty}
 //remove if not needed
 import scala.collection.JavaConversions._
 
@@ -15,7 +15,7 @@ import scala.collection.JavaConversions._
  * This class is mutable and intended for use by a single thread.
  * A new instance is created for each parse.
  */
-class MoneyParseContext(@BeanProperty var locale: Locale, @BeanProperty var text: CharSequence, index: Int)
+class MoneyParseContext(var locale: Locale, var text: CharSequence, index: Int)
     {
 
   /**
@@ -56,10 +56,8 @@ class MoneyParseContext(@BeanProperty var locale: Locale, @BeanProperty var text
       errorIndex: Int, 
       currency: CurrencyUnit, 
       amount: BigDecimal) {
-    this()
-    this.locale = locale
-    this.text = text
-    this.textIndex = index
+    this(locale, text, index)
+
     this.textErrorIndex = errorIndex
     this.currency = currency
     this.amount = amount
@@ -76,6 +74,13 @@ class MoneyParseContext(@BeanProperty var locale: Locale, @BeanProperty var text
   }
 
   /**
+   * Gets the locale
+   *
+   * @return the locale
+   */
+  def getLocale(): Locale = this.locale
+  
+  /**
    * Sets the text.
    *
    * @param text  the text being parsed, not null
@@ -84,6 +89,13 @@ class MoneyParseContext(@BeanProperty var locale: Locale, @BeanProperty var text
     MoneyFormatter.checkNotNull(text, "Text must not be null")
     this.text = text
   }
+
+  /**
+   * Gets the text.
+   *
+   * @returns the text
+   */
+  def getText(): CharSequence = this.text
 
   /**
    * Gets the length of the text being parsed.

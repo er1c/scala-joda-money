@@ -3,11 +3,12 @@ package org.joda.money.format
 import java.io.IOException
 import java.io.Serializable
 import java.util.Locale
+import java.lang.StringBuilder
 import org.joda.money.BigMoney
 import org.joda.money.BigMoneyProvider
 import org.joda.money.Money
 import MoneyFormatter._
-import scala.reflect.{BeanProperty, BooleanBeanProperty}
+import scala.beans.{BeanProperty, BooleanBeanProperty}
 //remove if not needed
 import scala.collection.JavaConversions._
 
@@ -36,35 +37,27 @@ object MoneyFormatter {
  * This class is immutable and thread-safe.
  */
 @SerialVersionUID(2385346258L)
-class MoneyFormatter(@BeanProperty val locale: Locale, printers: Array[MoneyPrinter], parsers: Array[MoneyParser])
+class MoneyFormatter(@BeanProperty val locale: Locale, @BeanProperty val printerParser: MultiPrinterParser)
     extends Serializable {
-
-  /**
-   * The printer/parser.
-   */
-  @BeanProperty
-  val printerParser = new MultiPrinterParser(printers, parsers)
 
   assert(locale != null)
 
-  assert(printers != null)
-
-  assert(parsers != null)
-
-  assert(printers.length == parsers.length)
+  assert(printerParser != null)
 
   /**
    * Constructor, creating a new formatter.
    *
    * @param locale  the locale to use, not null
-   * @param printerParser  the printer/parser, not null
+   * @param printers 
+   * @param parsers 
    */
-  private def this(locale: Locale, printerParser: MultiPrinterParser) {
-    this()
+  def this(locale: Locale, printers: Array[MoneyPrinter], parsers: Array[MoneyParser]) {
+    this(locale, new MultiPrinterParser(printers, parsers))
+    
     assert(locale != null)
-    assert(printerParser != null)
-    this.locale = locale
-    this.printerParser = printerParser
+    assert(printers != null)
+    assert(parsers != null)
+    assert(printers.length == parsers.length)
   }
 
   /**

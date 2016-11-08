@@ -1,6 +1,6 @@
 package org.joda.money
 
-import scala.reflect.{BeanProperty, BooleanBeanProperty}
+import scala.beans.{BeanProperty, BooleanBeanProperty}
 //remove if not needed
 import scala.collection.JavaConversions._
 

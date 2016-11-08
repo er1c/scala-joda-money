@@ -9,10 +9,8 @@ import java.math.RoundingMode
 import java.util.Arrays
 import java.util.Iterator
 import java.util.regex.Pattern
-import org.joda.convert.FromString
-import org.joda.convert.ToString
 import BigMoney._
-import scala.reflect.{BeanProperty, BooleanBeanProperty}
+import scala.beans.{BeanProperty, BooleanBeanProperty}
 //remove if not needed
 import scala.collection.JavaConversions._
 
@@ -38,7 +36,7 @@ object BigMoney {
   def of(currency: CurrencyUnit, amount: BigDecimal): BigMoney = {
     MoneyUtils.checkNotNull(currency, "Currency must not be null")
     MoneyUtils.checkNotNull(amount, "Amount must not be null")
-    if (amount.getClass != classOf[BigDecimal]) {
+    val correctedAmount: BigDecimal = if (amount.getClass != classOf[BigDecimal]) {
       var value = amount.unscaledValue()
       if (value == null) {
         throw new IllegalArgumentException("Illegal BigDecimal subclass")
@@ -46,9 +44,9 @@ object BigMoney {
       if (value.getClass != classOf[BigInteger]) {
         value = new BigInteger(value.toString)
       }
-      amount = new BigDecimal(value, amount.scale())
-    }
-    new BigMoney(currency, amount)
+      new BigDecimal(value, amount.scale())
+    } else amount
+    new BigMoney(currency, correctedAmount)
   }
 
   /**
@@ -114,8 +112,7 @@ object BigMoney {
     MoneyUtils.checkNotNull(currency, "CurrencyUnit must not be null")
     MoneyUtils.checkNotNull(amount, "Amount must not be null")
     MoneyUtils.checkNotNull(roundingMode, "RoundingMode must not be null")
-    amount = amount.setScale(scale, roundingMode)
-    BigMoney.of(currency, amount)
+    BigMoney.of(currency, amount.setScale(scale, roundingMode))
   }
 
   /**
@@ -319,7 +316,6 @@ object BigMoney {
    * @throws IllegalArgumentException if the string is malformed
    * @throws ArithmeticException if the amount is too large
    */
-  @FromString
   def parse(moneyStr: String): BigMoney = {
     MoneyUtils.checkNotNull(moneyStr, "Money must not be null")
     if (moneyStr.length < 4) {
@@ -382,13 +378,13 @@ class BigMoney private () extends BigMoneyProvider with Comparable[BigMoneyProvi
   /**
    * The currency, not null.
    */
-  private val currency = null
+  private var currency: CurrencyUnit = null
 
   /**
    * The amount, not null.
    */
   @BeanProperty
-  val amount = null
+  var amount: BigDecimal = null
 
   /**
    * Constructor, creating a new monetary instance.
@@ -398,8 +394,8 @@ class BigMoney private () extends BigMoneyProvider with Comparable[BigMoneyProvi
    */
   def this(currency: CurrencyUnit, amount: BigDecimal) {
     this()
-    assert(currency != null) : "Joda-Money bug: Currency must not be null"
-    assert(amount != null) : "Joda-Money bug: Amount must not be null"
+    assert(currency != null, "Joda-Money bug: Currency must not be null")
+    assert(amount != null, "Joda-Money bug: Amount must not be null")
     this.currency = currency
     this.amount = (if (amount.scale() < 0) amount.setScale(0) else amount)
   }
@@ -429,7 +425,7 @@ class BigMoney private () extends BigMoneyProvider with Comparable[BigMoneyProvi
    * @param newAmount  the new amount to use, not null
    * @return the new instance, never null
    */
-  private def with(newAmount: BigDecimal): BigMoney = {
+  private def `with`(newAmount: BigDecimal): BigMoney = {
     if (newAmount == amount) {
       return this
     }
@@ -774,7 +770,7 @@ class BigMoney private () extends BigMoneyProvider with Comparable[BigMoneyProvi
       val money = checkCurrencyEqual(moneyProvider)
       total = total.add(money.amount)
     }
-    with(total)
+    `with`(total)
   }
 
   /**
@@ -983,7 +979,7 @@ class BigMoney private () extends BigMoneyProvider with Comparable[BigMoneyProvi
       val money = checkCurrencyEqual(moneyProvider)
       total = total.subtract(money.amount)
     }
-    with(total)
+    `with`(total)
   }
 
   /**
@@ -1577,14 +1573,10 @@ class BigMoney private () extends BigMoneyProvider with Comparable[BigMoneyProvi
    * @see #isEqual
    */
   override def equals(other: Any): Boolean = {
-    if (this == other) {
-      return true
+    other match {
+      case otherMoney: BigMoney => currency == otherMoney.getCurrencyUnit && amount == otherMoney.amount
+      case _ => false
     }
-    if (other.isInstanceOf[BigMoney]) {
-      val otherMoney = other.asInstanceOf[BigMoney]
-      return currency == otherMoney.getCurrencyUnit && amount == otherMoney.amount
-    }
-    false
   }
 
   /**
@@ -1602,7 +1594,6 @@ class BigMoney private () extends BigMoneyProvider with Comparable[BigMoneyProvi
    *
    * @return the string representation of this monetary value, never null
    */
-  @ToString
   override def toString(): String = {
     new StringBuilder().append(currency.getCode).append(' ')
       .append(amount.toPlainString())

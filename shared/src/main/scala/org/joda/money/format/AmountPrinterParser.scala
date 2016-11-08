@@ -15,7 +15,9 @@ import scala.collection.JavaConversions._
 @SerialVersionUID(1L)
 class AmountPrinterParser(val style: MoneyAmountStyle) extends MoneyPrinter with MoneyParser with Serializable {
 
-  override def print(context: MoneyPrintContext, appendable: Appendable, money: BigMoney) {
+  override def print(context: MoneyPrintContext, appendable: Appendable, m: BigMoney) {
+    var money: BigMoney = m
+    
     val activeStyle = style.localize(context.getLocale)
     if (money.isNegative) {
       money = money.negated()
@@ -100,22 +102,27 @@ class AmountPrinterParser(val style: MoneyAmountStyle) extends MoneyPrinter with
   }
 
   override def parse(context: MoneyParseContext) {
-    val len = context.getTextLength
+    val len: Int = context.getTextLength
     val activeStyle = style.localize(context.getLocale)
     val buf = Array.ofDim[Char](len - context.getIndex)
-    val bufPos = 0
-    var dpSeen = false
-    var pos = context.getIndex
+    var bufPos: Int = 0
+    var dpSeen: Boolean = false
+    var pos: Int = context.getIndex
     if (pos < len) {
-      val ch = context.getText.charAt(pos += 1)
+      pos = pos + 1
+      val ch = context.getText.charAt(pos)
       if (ch == activeStyle.getNegativeSignCharacter) {
-        buf(bufPos += 1) = '-'
+        bufPos = bufPos + 1
+        buf(bufPos) = '-'
       } else if (ch == activeStyle.getPositiveSignCharacter) {
-        buf(bufPos += 1) = '+'
+        bufPos = bufPos + 1
+        buf(bufPos) = '+'
       } else if (ch >= activeStyle.getZeroCharacter && ch < activeStyle.getZeroCharacter + 10) {
-        buf(bufPos += 1) = ('0' + ch - activeStyle.getZeroCharacter).toChar
+        bufPos = bufPos + 1
+        buf(bufPos) = ('0' + ch - activeStyle.getZeroCharacter).toChar
       } else if (ch == activeStyle.getDecimalPointCharacter) {
-        buf(bufPos += 1) = '.'
+        bufPos = bufPos + 1
+        buf(bufPos) = '.'
         dpSeen = true
       } else {
         context.setError()
@@ -126,10 +133,12 @@ class AmountPrinterParser(val style: MoneyAmountStyle) extends MoneyPrinter with
     while (pos < len) {
       val ch = context.getText.charAt(pos)
       if (ch >= activeStyle.getZeroCharacter && ch < activeStyle.getZeroCharacter + 10) {
-        buf(bufPos += 1) = ('0' + ch - activeStyle.getZeroCharacter).toChar
+        bufPos = bufPos + 1
+        buf(bufPos) = ('0' + ch - activeStyle.getZeroCharacter).toChar
         lastWasGroup = false
       } else if (ch == activeStyle.getDecimalPointCharacter && dpSeen == false) {
-        buf(bufPos += 1) = '.'
+        bufPos = bufPos + 1
+        buf(bufPos) = '.'
         dpSeen = true
         lastWasGroup = false
       } else if (ch == activeStyle.getGroupingCharacter && lastWasGroup == false) {

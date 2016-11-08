@@ -18,17 +18,17 @@ object Ser {
   /**
    Type for BigMoney.
    */
-  val BIG_MONEY = 'B'
+  val BIG_MONEY: Byte = 'B'
 
   /**
    Type for Money.
    */
-  val MONEY = 'M'
+  val MONEY: Byte = 'M'
 
   /**
    Type for CurrencyUnit.
    */
-  val CURRENCY_UNIT = 'C'
+  val CURRENCY_UNIT: Byte = 'C'
 }
 
 /**

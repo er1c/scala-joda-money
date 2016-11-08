@@ -7,14 +7,14 @@ import scala.collection.JavaConversions._
 /**
  * Provider for available currencies.
  */
-abstract class CurrencyUnitDataProvider {
+trait CurrencyUnitDataProvider {
 
   /**
    * Registers all the currencies known by this provider.
    *
    * @throws Exception if an error occurs
    */
-  protected def registerCurrencies(): Unit
+  def registerCurrencies(): Unit
 
   /**
    * Registers a currency allowing it to be used.

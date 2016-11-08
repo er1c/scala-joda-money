@@ -14,10 +14,8 @@ import java.util.Set
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentMap
 import java.util.regex.Pattern
-import org.joda.convert.FromString
-import org.joda.convert.ToString
 import CurrencyUnit._
-import scala.reflect.{BeanProperty, BooleanBeanProperty}
+import scala.beans.{BeanProperty, BooleanBeanProperty}
 //remove if not needed
 import scala.collection.JavaConversions._
 
@@ -232,7 +230,6 @@ object CurrencyUnit {
    * @return the singleton instance, never null
    * @throws IllegalCurrencyException if the currency is unknown
    */
-  @FromString
   def of(currencyCode: String): CurrencyUnit = {
     MoneyUtils.checkNotNull(currencyCode, "Currency code must not be null")
     val currency = currenciesByCode.get(currencyCode)
@@ -359,7 +356,7 @@ object CurrencyUnit {
 class CurrencyUnit(@BeanProperty val code: String, @BeanProperty val numericCode: Short, val decimalPlaces: Short)
     extends Comparable[CurrencyUnit] with Serializable {
 
-  assert(code != null) : "Joda-Money bug: Currency code must not be null"
+  assert(code != null, "Joda-Money bug: Currency code must not be null")
 
   /**
    * Block malicious data streams.
@@ -527,13 +524,10 @@ class CurrencyUnit(@BeanProperty val code: String, @BeanProperty val numericCode
    * @return true if equal
    */
   override def equals(obj: Any): Boolean = {
-    if (obj == this) {
-      return true
+    obj match {
+      case otherUnit: CurrencyUnit => code == otherUnit.code
+      case _ => false
     }
-    if (obj.isInstanceOf[CurrencyUnit]) {
-      return code == obj.asInstanceOf[CurrencyUnit].code
-    }
-    false
   }
 
   /**
@@ -548,6 +542,5 @@ class CurrencyUnit(@BeanProperty val code: String, @BeanProperty val numericCode
    *
    * @return the currency code, never null
    */
-  @ToString
   override def toString(): String = code
 }

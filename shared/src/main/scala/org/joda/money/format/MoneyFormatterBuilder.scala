@@ -13,33 +13,80 @@ import scala.collection.JavaConversions._
 
 object MoneyFormatterBuilder {
 
-  object Singletons extends Enumeration {
+  sealed abstract class Singletons(var s: String) extends MoneyPrinter with MoneyParser {
+    override def toString(): String = s
+  }
 
-    val CODE = new Singletons("${code}")
+  object Singletons {
+    case object CODE extends Singletons("${code}") {
+      override def print(context: MoneyPrintContext, appendable: Appendable, money: BigMoney) {
+         appendable.append(money.getCurrencyUnit().getCode())
+       }
+       
+       override def parse(context: MoneyParseContext) {
+         val endPos: Int = context.getIndex() + 3
+         if (endPos > context.getTextLength()) {
+           context.setError()
+         } else {
+           val code: String = context.getTextSubstring(context.getIndex(), endPos)
+           try {
+             context.setCurrency(CurrencyUnit.of(code));
+             context.setIndex(endPos);
+           } catch {
+             case ex: IllegalCurrencyException => context.setError()
+           }
+         }
+       }
+    }
+    
+    case object NUMERIC_3_CODE extends Singletons("${numeric3Code}") {
+      override def print(context: MoneyPrintContext, appendable: Appendable, money: BigMoney) {
+        appendable.append(money.getCurrencyUnit().getNumeric3Code())
+      }
 
-    val NUMERIC_3_CODE = new Singletons("${numeric3Code}")
+      override def parse(context: MoneyParseContext) {
+        val endPos: Int = context.getIndex() + 3
+        if (endPos > context.getTextLength()) {
+          context.setError();
+        } else {
+          val code: String = context.getTextSubstring(context.getIndex(), endPos)
+          try {
+            context.setCurrency(CurrencyUnit.ofNumericCode(code))
+            context.setIndex(endPos)
+          } catch {
+            case ex: IllegalCurrencyException => context.setError()
+          }
+        }
+      }
+    }
+    
+    case object NUMERIC_CODE extends Singletons("${numericCode}") {
+      override def print(context: MoneyPrintContext, appendable: Appendable, money: BigMoney) {
+        appendable.append(Integer.toString(money.getCurrencyUnit().getNumericCode()))
+      }
+      
+      override def parse(context: MoneyParseContext) {
+        val code: String = context.getText().toString().substring(context.getIndex()).takeWhile(Character.isDigit)
+        try {
+           context.setCurrency(CurrencyUnit.ofNumericCode(code))
+           context.setIndex(context.getIndex()+code.size)
+        } catch {
+          case ex: IllegalCurrencyException => context.setError()
+        }
+      }
+    }
+  }
 
-    val NUMERIC_CODE = new Singletons("${numericCode}")
+  sealed abstract class SingletonPrinters extends MoneyPrinter {
+    override def print(context: MoneyPrintContext, appendable: Appendable, money: BigMoney) {
+      appendable.append(money.getCurrencyUnit.getSymbol(context.getLocale))
+    }
 
-    class Singletons private (var toString: String) extends Val with MoneyPrinter with MoneyParser
-
-    implicit def convertValue(v: Value): Singletons = v.asInstanceOf[Singletons]
+    override def toString(): String = "${symbolLocalized}"
   }
 
   object SingletonPrinters extends Enumeration {
-
-    val LOCALIZED_SYMBOL = new SingletonPrinters()
-
-    class SingletonPrinters extends Val with MoneyPrinter {
-
-      override def print(context: MoneyPrintContext, appendable: Appendable, money: BigMoney) {
-        appendable.append(money.getCurrencyUnit.getSymbol(context.getLocale))
-      }
-
-      override def toString(): String = "${symbolLocalized}"
-    }
-
-    implicit def convertValue(v: Value): SingletonPrinters = v.asInstanceOf[SingletonPrinters]
+    case object LOCALIZED_SYMBOL extends SingletonPrinters
   }
 }
 

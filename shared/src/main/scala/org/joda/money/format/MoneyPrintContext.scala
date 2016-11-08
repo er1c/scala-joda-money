@@ -1,7 +1,7 @@
 package org.joda.money.format
 
 import java.util.Locale
-import scala.reflect.{BeanProperty, BooleanBeanProperty}
+import scala.beans.{BeanProperty, BooleanBeanProperty}
 //remove if not needed
 import scala.collection.JavaConversions._
 
@@ -11,7 +11,7 @@ import scala.collection.JavaConversions._
  * This class is mutable and intended for use by a single thread.
  * A new instance is created for each parse.
  */
-class MoneyPrintContext(@BeanProperty var locale: Locale) {
+class MoneyPrintContext(var locale: Locale) {
 
   /**
    * Sets the locale.
@@ -22,4 +22,11 @@ class MoneyPrintContext(@BeanProperty var locale: Locale) {
     MoneyFormatter.checkNotNull(locale, "Locale must not be null")
     this.locale = locale
   }
+  
+  /**
+   * Get the locale.
+   *
+   * @return the locale
+   */
+  def getLocale(): Locale = this.locale
 }
