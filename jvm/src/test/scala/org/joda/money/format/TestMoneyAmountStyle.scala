@@ -1,6 +1,6 @@
 package org.joda.money.format
 
-import org.scalatest.Assertions
+import org.scalatest.testng.TestNGSuite
 import org.testng.Assert._
 import org.testng.annotations.{AfterMethod, BeforeMethod, Test}
 import java.math.BigDecimal
@@ -24,7 +24,7 @@ object TestMoneyAmountStyle {
  * Test MoneyAmountStyle.
  */
 @Test
-class TestMoneyAmountStyle extends Assertions {
+class TestMoneyAmountStyle extends TestNGSuite {
 
   @BeforeMethod
   def beforeMethod() {

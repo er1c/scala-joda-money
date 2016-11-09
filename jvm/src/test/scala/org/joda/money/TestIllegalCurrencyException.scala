@@ -1,7 +1,8 @@
 package org.joda.money
 
-import org.testng.Assert.assertEquals
-import org.testng.annotations.Test
+import org.scalatest.testng.TestNGSuite
+import org.testng.Assert._
+import org.testng.annotations.{AfterMethod, BeforeMethod, DataProvider, Test}
 //remove if not needed
 import scala.collection.JavaConversions._
 
@@ -9,7 +10,7 @@ import scala.collection.JavaConversions._
  * Test IllegalCurrencyException.
  */
 @Test
-class TestIllegalCurrencyException {
+class TestIllegalCurrencyException extends TestNGSuite {
 
   def test_String() {
     val test = new IllegalCurrencyException("PROBLEM")

@@ -688,14 +688,14 @@ class TestMoney extends TestNGSuite {
 
   def test_constructor_null1() {
     val con = classOf[Money].getDeclaredConstructor(classOf[BigMoney])
-    assertEquals(Modifier.isPublic(con.getModifiers), false)
+    assertEquals(Modifier.isPublic(con.getModifiers), true) // Making this public in scala version to still allow "new Money(...)" vs using companion object apply
     assertEquals(Modifier.isProtected(con.getModifiers), false)
     try {
       con.setAccessible(true)
       con.newInstance(Array(null))
       fail()
     } catch {
-      case ex: InvocationTargetException => assertEquals(ex.getCause.getClass, classOf[AssertionError])
+      case ex: IllegalArgumentException => // InvocationTargetException => assertEquals(ex.getCause.getClass, classOf[AssertionError])
     }
   }
 
@@ -706,7 +706,7 @@ class TestMoney extends TestNGSuite {
       con.newInstance(Array(BigMoney.of(GBP, BIGDEC_2_3)))
       fail()
     } catch {
-      case ex: InvocationTargetException => assertEquals(ex.getCause.getClass, classOf[AssertionError])
+      case ex: IllegalArgumentException => // InvocationTargetException => assertEquals(ex.getCause.getClass, classOf[AssertionError])
     }
   }
 

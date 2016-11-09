@@ -1,6 +1,8 @@
 package org.joda.money.format
 
-import org.testng.Assert.assertEquals
+import org.scalatest.testng.TestNGSuite
+import org.testng.Assert._
+import org.testng.annotations.{AfterMethod, BeforeMethod, DataProvider, Test}
 import java.math.BigDecimal
 import java.text.ParsePosition
 import java.util.Locale
@@ -13,7 +15,7 @@ import scala.collection.JavaConversions._
  * Test MoneyParseContext.
  */
 @Test
-class TestMoneyParseContext {
+class TestMoneyParseContext extends TestNGSuite {
 
   def test_initialState() {
     val test = new MoneyParseContext(Locale.FRANCE, "GBP 123", 0)

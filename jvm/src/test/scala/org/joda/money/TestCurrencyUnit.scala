@@ -1,7 +1,8 @@
 package org.joda.money
 
-import org.testng.Assert.assertEquals
-import org.testng.Assert.assertTrue
+import org.scalatest.testng.TestNGSuite
+import org.testng.Assert._
+import org.testng.annotations.{AfterMethod, BeforeMethod, DataProvider, Test}
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.InvalidObjectException
@@ -27,7 +28,7 @@ object TestCurrencyUnit {
  * Test CurrencyUnit.
  */
 @Test
-class TestCurrencyUnit {
+class TestCurrencyUnit extends TestNGSuite {
 
   def test_registeredCurrencies() {
     val curList = CurrencyUnit.registeredCurrencies()

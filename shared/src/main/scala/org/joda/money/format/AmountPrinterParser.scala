@@ -4,6 +4,7 @@ import java.io.IOException
 import java.io.Serializable
 import java.math.BigDecimal
 import org.joda.money.BigMoney
+import scala.util.control.Breaks._
 //remove if not needed
 import scala.collection.JavaConversions._
 
@@ -109,48 +110,55 @@ class AmountPrinterParser(val style: MoneyAmountStyle) extends MoneyPrinter with
     var dpSeen: Boolean = false
     var pos: Int = context.getIndex
     if (pos < len) {
-      pos = pos + 1
       val ch = context.getText.charAt(pos)
+      pos += 1
       if (ch == activeStyle.getNegativeSignCharacter) {
-        bufPos = bufPos + 1
         buf(bufPos) = '-'
+        bufPos += 1
       } else if (ch == activeStyle.getPositiveSignCharacter) {
-        bufPos = bufPos + 1
         buf(bufPos) = '+'
+        bufPos += 1
       } else if (ch >= activeStyle.getZeroCharacter && ch < activeStyle.getZeroCharacter + 10) {
-        bufPos = bufPos + 1
         buf(bufPos) = ('0' + ch - activeStyle.getZeroCharacter).toChar
+        bufPos += 1
       } else if (ch == activeStyle.getDecimalPointCharacter) {
-        bufPos = bufPos + 1
         buf(bufPos) = '.'
+        bufPos += 1
         dpSeen = true
       } else {
         context.setError()
         return
       }
     }
+
     var lastWasGroup = false
-    while (pos < len) {
-      val ch = context.getText.charAt(pos)
-      if (ch >= activeStyle.getZeroCharacter && ch < activeStyle.getZeroCharacter + 10) {
-        bufPos = bufPos + 1
-        buf(bufPos) = ('0' + ch - activeStyle.getZeroCharacter).toChar
-        lastWasGroup = false
-      } else if (ch == activeStyle.getDecimalPointCharacter && dpSeen == false) {
-        bufPos = bufPos + 1
-        buf(bufPos) = '.'
-        dpSeen = true
-        lastWasGroup = false
-      } else if (ch == activeStyle.getGroupingCharacter && lastWasGroup == false) {
-        lastWasGroup = true
-      } else {
-        //break
+    breakable {
+      while (pos < len) {
+        val ch = context.getText.charAt(pos)
+
+        if (ch >= activeStyle.getZeroCharacter && ch < activeStyle.getZeroCharacter + 10) {
+          buf(bufPos) = ('0' + ch - activeStyle.getZeroCharacter).toChar
+          bufPos += 1
+          lastWasGroup = false
+        } else if (ch == activeStyle.getDecimalPointCharacter && dpSeen == false) {
+          buf(bufPos) = '.'
+          bufPos += 1
+          dpSeen = true
+          lastWasGroup = false
+        } else if (ch == activeStyle.getGroupingCharacter && lastWasGroup == false) {
+          lastWasGroup = true
+        } else {
+          break
+        }
+
+        pos += 1
       }
-      pos += 1
     }
+
     if (lastWasGroup) {
       pos -= 1
     }
+
     try {
       context.setAmount(new BigDecimal(buf, 0, bufPos))
       context.setIndex(pos)

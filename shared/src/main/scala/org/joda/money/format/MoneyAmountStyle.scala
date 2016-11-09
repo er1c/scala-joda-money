@@ -68,14 +68,14 @@ object MoneyAmountStyle {
    * A style that will be filled in with localized values using the locale of the formatter.
    * Grouping is enabled. Forced decimal point is disabled.
    */
-  val LOCALIZED_GROUPING = new MoneyAmountStyle(-1.toChar, -1.toChar, -1.toChar, -1.toChar, GroupingStyle.FULL, -1.toChar, -1, -1, false, 
+  val LOCALIZED_GROUPING = new MoneyAmountStyle(-1.toChar, -1.toChar, -1.toChar, -1.toChar, GroupingStyle.FULL, -1.toChar, -1, -1, false,
     false)
 
   /**
    * A style that will be filled in with localized values using the locale of the formatter.
    * Grouping is disabled. Forced decimal point is disabled.
    */
-  val LOCALIZED_NO_GROUPING = new MoneyAmountStyle(-1.toChar, -1.toChar, -1.toChar, -1.toChar, GroupingStyle.NONE, -1.toChar, -1, -1, false, 
+  val LOCALIZED_NO_GROUPING = new MoneyAmountStyle(-1.toChar, -1.toChar, -1.toChar, -1.toChar, GroupingStyle.NONE, -1.toChar, -1, -1, false,
     false)
 
   /**
@@ -175,23 +175,23 @@ class MoneyAmountStyle private (val zeroCharacter: Character,
     MoneyFormatter.checkNotNull(locale, "Locale must not be null")
     var result = this
     var protoStyle: MoneyAmountStyle = null
-    if (zeroCharacter < 0) {
+    if (zeroCharacter == -1.toChar) {
       protoStyle = getLocalizedStyle(locale)
       result = result.withZeroCharacter(protoStyle.getZeroCharacter)
     }
-    if (positiveCharacter < 0) {
+    if (positiveCharacter == -1.toChar) {
       protoStyle = getLocalizedStyle(locale)
       result = result.withPositiveSignCharacter(protoStyle.getPositiveSignCharacter)
     }
-    if (negativeCharacter < 0) {
+    if (negativeCharacter == -1.toChar) {
       protoStyle = getLocalizedStyle(locale)
       result = result.withNegativeSignCharacter(protoStyle.getNegativeSignCharacter)
     }
-    if (decimalPointCharacter < 0) {
+    if (decimalPointCharacter == -1.toChar) {
       protoStyle = (if (protoStyle == null) getLocalizedStyle(locale) else protoStyle)
       result = result.withDecimalPointCharacter(protoStyle.getDecimalPointCharacter)
     }
-    if (groupingCharacter < 0) {
+    if (groupingCharacter == -1.toChar) {
       protoStyle = (if (protoStyle == null) getLocalizedStyle(locale) else protoStyle)
       result = result.withGroupingCharacter(protoStyle.getGroupingCharacter)
     }
@@ -216,7 +216,7 @@ class MoneyAmountStyle private (val zeroCharacter: Character,
    * @return the zero character, null if to be determined by locale
    */
   def getZeroCharacter(): Character = {
-    if (zeroCharacter < 0) null else zeroCharacter
+    if (zeroCharacter == -1.toChar) null else zeroCharacter
   }
 
   /**
@@ -249,7 +249,7 @@ class MoneyAmountStyle private (val zeroCharacter: Character,
    * @return the format for positive amounts, null if to be determined by locale
    */
   def getPositiveSignCharacter(): Character = {
-    if (positiveCharacter < 0) null else positiveCharacter.toChar
+    if (positiveCharacter == -1.toChar) null else positiveCharacter.toChar
   }
 
   /**
@@ -277,7 +277,7 @@ class MoneyAmountStyle private (val zeroCharacter: Character,
    * @return the format for negative amounts, null if to be determined by locale
    */
   def getNegativeSignCharacter(): Character = {
-    if (negativeCharacter < 0) null else negativeCharacter
+    if (negativeCharacter == -1.toChar) null else negativeCharacter
   }
 
   /**
@@ -303,7 +303,7 @@ class MoneyAmountStyle private (val zeroCharacter: Character,
    * @return the decimal point character, null if to be determined by locale
    */
   def getDecimalPointCharacter(): Character = {
-    if (decimalPointCharacter < 0) null else decimalPointCharacter.toChar
+    if (decimalPointCharacter == -1.toChar) null else decimalPointCharacter.toChar
   }
 
   /**
@@ -329,7 +329,7 @@ class MoneyAmountStyle private (val zeroCharacter: Character,
    * @return the grouping character, null if to be determined by locale
    */
   def getGroupingCharacter(): Character = {
-    if (groupingCharacter < 0) null else groupingCharacter
+    if (groupingCharacter == -1.toChar) null else groupingCharacter
   }
 
   /**
@@ -473,22 +473,18 @@ class MoneyAmountStyle private (val zeroCharacter: Character,
    * @return true if equal
    */
   override def equals(other: Any): Boolean = {
-    if (other == this) {
-      return true
+    other match {
+      case otherStyle: MoneyAmountStyle => (zeroCharacter == otherStyle.zeroCharacter) &&
+        (positiveCharacter == otherStyle.positiveCharacter) &&
+        (negativeCharacter == otherStyle.negativeCharacter) &&
+        (decimalPointCharacter == otherStyle.decimalPointCharacter) &&
+        (groupingStyle == otherStyle.groupingStyle) &&
+        (groupingCharacter == otherStyle.groupingCharacter) &&
+        (groupingSize == otherStyle.groupingSize) &&
+        (forceDecimalPoint == otherStyle.forceDecimalPoint) &&
+        (absValue == otherStyle.absValue)
+      case _ => false
     }
-    if (other.isInstanceOf[MoneyAmountStyle] == false) {
-      return false
-    }
-    val otherStyle = other.asInstanceOf[MoneyAmountStyle]
-    (zeroCharacter == otherStyle.zeroCharacter) && 
-      (positiveCharacter == otherStyle.positiveCharacter) && 
-      (negativeCharacter == otherStyle.negativeCharacter) && 
-      (decimalPointCharacter == otherStyle.decimalPointCharacter) && 
-      (groupingStyle == otherStyle.groupingStyle) && 
-      (groupingCharacter == otherStyle.groupingCharacter) && 
-      (groupingSize == otherStyle.groupingSize) && 
-      (forceDecimalPoint == otherStyle.forceDecimalPoint) && 
-      (absValue == otherStyle.absValue)
   }
 
   /**

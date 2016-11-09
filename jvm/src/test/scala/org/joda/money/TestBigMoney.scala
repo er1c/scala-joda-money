@@ -126,7 +126,7 @@ class TestBigMoney extends TestNGSuite {
 
   def test_factory_of_Currency_subClass2() {
     @SerialVersionUID(1L)
-    class BadInteger extends BigInteger(Array.empty[Byte])
+    class BadInteger extends BigInteger("123")
     @SerialVersionUID(1L)
     class BadDecimal() extends BigDecimal(432) {
 
@@ -694,14 +694,14 @@ class TestBigMoney extends TestNGSuite {
 
   def test_constructor_null1() {
     val con = classOf[BigMoney].getDeclaredConstructor(classOf[CurrencyUnit], classOf[BigDecimal])
-    assertEquals(Modifier.isPublic(con.getModifiers), false)
+    assertEquals(Modifier.isPublic(con.getModifiers), true) // Making this public in scala version to still allow "new BigMoney(...)" vs using companion object apply
     assertEquals(Modifier.isProtected(con.getModifiers), false)
     try {
       con.setAccessible(true)
       con.newInstance(Array(null, BIGDEC_2_34))
       fail()
     } catch {
-      case ex: InvocationTargetException => assertEquals(ex.getCause.getClass, classOf[AssertionError])
+      case ex: IllegalArgumentException => //ex: InvocationTargetException => assertEquals(ex.getCause.getClass, classOf[AssertionError])
     }
   }
 
@@ -712,7 +712,7 @@ class TestBigMoney extends TestNGSuite {
       con.newInstance(Array(GBP, null))
       fail()
     } catch {
-      case ex: InvocationTargetException => assertEquals(ex.getCause.getClass, classOf[AssertionError])
+      case ex: IllegalArgumentException => //ex: InvocationTargetException => assertEquals(ex.getCause.getClass, classOf[AssertionError])
     }
   }
 

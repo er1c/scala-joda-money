@@ -13,7 +13,7 @@ import scala.collection.JavaConversions._
 
 object MoneyFormatterBuilder {
 
-  sealed abstract class Singletons(var s: String) extends MoneyPrinter with MoneyParser {
+  sealed abstract class Singletons(var s: String) extends MoneyPrinter with MoneyParser with Serializable {
     override def toString(): String = s
   }
 
@@ -30,7 +30,7 @@ object MoneyFormatterBuilder {
          } else {
            val code: String = context.getTextSubstring(context.getIndex(), endPos)
            try {
-             context.setCurrency(CurrencyUnit.of(code));
+             context.setCurrency(CurrencyUnit.of(code))
              context.setIndex(endPos);
            } catch {
              case ex: IllegalCurrencyException => context.setError()
@@ -47,7 +47,7 @@ object MoneyFormatterBuilder {
       override def parse(context: MoneyParseContext) {
         val endPos: Int = context.getIndex() + 3
         if (endPos > context.getTextLength()) {
-          context.setError();
+          context.setError()
         } else {
           val code: String = context.getTextSubstring(context.getIndex(), endPos)
           try {

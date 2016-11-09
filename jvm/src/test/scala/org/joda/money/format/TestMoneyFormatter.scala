@@ -55,18 +55,19 @@ class TestMoneyFormatter extends TestNGSuite {
   @BeforeMethod
   def beforeMethod() {
     Locale.setDefault(TEST_GB_LOCALE)
-    iPrintTest = new MoneyFormatterBuilder().appendCurrencyCode().appendLiteral(" hello")
-      .toFormatter()
-    iCannotPrint = new MoneyFormatterBuilder().append(null, new MoneyParser() {
 
+    iPrintTest = new MoneyFormatterBuilder().appendCurrencyCode().appendLiteral(" hello").toFormatter()
+
+    iCannotPrint = new MoneyFormatterBuilder().append(null, new MoneyParser() {
       override def parse(context: MoneyParseContext) {
       }
-    })
-      .toFormatter()
+    }).toFormatter()
+
     iParseTest = new MoneyFormatterBuilder().appendAmountLocalized()
       .appendLiteral(" ")
       .appendCurrencyCode()
       .toFormatter()
+
     iCannotParse = new MoneyFormatterBuilder().append(new MoneyPrinter() {
 
       override def print(context: MoneyPrintContext, appendable: Appendable, money: BigMoney) {

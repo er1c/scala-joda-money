@@ -9,10 +9,10 @@ import org.joda.money.BigMoney
 import org.joda.money.BigMoneyProvider
 import org.joda.money.CurrencyUnit
 import org.joda.money.Money
-import org.testng.annotations.AfterMethod
-import org.testng.annotations.BeforeMethod
-import org.testng.annotations.DataProvider
-import org.testng.annotations.Test
+import org.scalatest.testng.TestNGSuite
+import org.testng.Assert._
+import org.testng.annotations.{AfterMethod, BeforeMethod, DataProvider, Test}
+
 import TestMoneyFormatterBuilder._
 //remove if not needed
 import scala.collection.JavaConversions._
@@ -60,7 +60,7 @@ object TestMoneyFormatterBuilder {
  * Test MoneyFormatterBuilder.
  */
 @Test
-class TestMoneyFormatterBuilder {
+class TestMoneyFormatterBuilder extends TestNGSuite {
 
   private var iBuilder: MoneyFormatterBuilder = _
 
