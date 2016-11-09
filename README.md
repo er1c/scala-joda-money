@@ -25,29 +25,37 @@ Then, executed mvn scalagen:test to generate src/test/scala
 eric@Erics-MacBook-Pro:~/Work/scala-joda-money$ sbt test
 [info] Loading project definition from /Users/eric/Work/scala-joda-money/project
 [info] Set current project to scalajs root project (in build file:/Users/eric/Work/scala-joda-money/)
-[info] Updating {file:/Users/eric/Work/scala-joda-money/}scalajodamoneyJVM...
-[info] Updating {file:/Users/eric/Work/scala-joda-money/}scalajodamoneyJS...
-[info] Updating {file:/Users/eric/Work/scala-joda-money/}root...
-[info] Resolving jline#jline;2.12.1 ...
-[info] Done updating.
-[info] Resolving org.eclipse.jetty#jetty-continuation;8.1.16.v20140903 ...
-[info] Done updating.
-[info] Resolving org.scala-lang.modules#scala-xml_2.11;1.0.5 ...
-[info] Compiling 23 Scala sources to /Users/eric/Work/scala-joda-money/js/target/scala-2.11/classes...
-[info] Resolving jline#jline;2.12.1 ...
-[info] Done updating.
-[info] Compiling 23 Scala sources to /Users/eric/Work/scala-joda-money/jvm/target/scala-2.11/classes...
-[warn] there was one feature warning; re-run with -feature for details
-[warn] one warning found
-[info] Compiling 14 Scala sources to /Users/eric/Work/scala-joda-money/jvm/target/scala-2.11/test-classes...
-[warn] there was one feature warning; re-run with -feature for details
-[warn] one warning found
-[info] Fast optimizing /Users/eric/Work/scala-joda-money/js/target/scala-2.11/scala-joda-money-test-fastopt.js
+[info] Compiling 2 Scala sources to /Users/eric/Work/scala-joda-money/jvm/target/scala-2.11/classes...
+[info] Compiling 2 Scala sources to /Users/eric/Work/scala-joda-money/js/target/scala-2.11/classes...
 [TestNG] Running:
   Command line suite
 
 [TestNG] Running:
   Command line suite
+
+[TestNG] Running:
+  Command line suite
+
+[TestNG] Running:
+  Command line suite
+
+[TestNG] Running:
+  Command line suite
+
+[TestNG] Running:
+  Command line suite
+
+
+===============================================
+Command line suite
+Total tests run: 12, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Command line suite
+Total tests run: 28, Failures: 0, Skips: 0
+===============================================
 
 [TestNG] Running:
   Command line suite
@@ -61,10 +69,22 @@ Command line suite
 Total tests run: 4, Failures: 0, Skips: 0
 ===============================================
 
+[TestNG] Running:
+  Command line suite
+
+[TestNG] Running:
+  Command line suite
+
 
 ===============================================
 Command line suite
-Total tests run: 28, Failures: 0, Skips: 0
+Total tests run: 2, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Command line suite
+Total tests run: 76, Failures: 0, Skips: 0
 ===============================================
 
 
@@ -73,49 +93,235 @@ Command line suite
 Total tests run: 29, Failures: 0, Skips: 0
 ===============================================
 
-[info] TestMoneyUtils_Money:
-[info] - test_add
-[info] - test_add_differentCurrencies
-[info] - test_add_null1
-[info] - test_add_null2
-[info] - test_add_nullBoth
-[info] - test_checkNotNull_notNull
-[info] - test_checkNotNull_null
-[info] - test_isNegative
-[info] - test_isNegativeOrZero
-[info] - test_isPositive
-[info] - test_isPositiveOrZero
-[info] - test_isZero
-[info] - test_max1
-[info] - test_max2
-[info] - test_max_differentCurrencies
-[info] - test_max_null1
-[info] - test_max_null2
-[info] - test_max_nullBoth
-[info] - test_min1
-[info] - test_min2
-[info] - test_min_differentCurrencies
-[info] - test_min_null1
-[info] - test_min_null2
-[info] - test_min_nullBoth
-[info] - test_subtract
-[info] - test_subtract_differentCurrencies
-[info] - test_subtract_null1
-[info] - test_subtract_null2
-[info] - test_subtract_nullBoth
-[TestNG] Running:
-  Command line suite
 
-[TestNG] Running:
-  Command line suite
+===============================================
+Command line suite
+Total tests run: 92, Failures: 0, Skips: 0
+===============================================
 
 
 ===============================================
 Command line suite
-Total tests run: 64, Failures: 24, Skips: 0
+Total tests run: 64, Failures: 2, Skips: 0
 ===============================================
 
-[TestNG] Reporter org.testng.reporters.JUnitReportReporter@641bc748 failed
+[TestNG] Running:
+  Command line suite
+
+[TestNG] Reporter org.testng.reporters.JUnitReportReporter@7c17bc85 failed
+java.util.ConcurrentModificationException
+	at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:901)
+	at java.util.ArrayList$Itr.next(ArrayList.java:851)
+	at org.testng.reporters.JUnitReportReporter.getNextConfiguration(JUnitReportReporter.java:220)
+	at org.testng.reporters.JUnitReportReporter.generateReport(JUnitReportReporter.java:105)
+	at org.testng.TestNG.generateReports(TestNG.java:1175)
+	at org.testng.TestNG.run(TestNG.java:1102)
+	at org.scalatest.testng.TestNGSuiteLike$class.run(TestNGSuiteLike.scala:261)
+	at org.scalatest.testng.TestNGSuite.run(TestNGSuite.scala:67)
+	at org.scalatest.testng.TestNGSuiteLike$class.runTestNG(TestNGSuiteLike.scala:248)
+	at org.scalatest.testng.TestNGSuite.runTestNG(TestNGSuite.scala:67)
+	at org.scalatest.testng.TestNGSuiteLike$class.run(TestNGSuiteLike.scala:149)
+	at org.scalatest.testng.TestNGSuite.run(TestNGSuite.scala:67)
+	at org.scalatest.tools.Framework.org$scalatest$tools$Framework$$runSuite(Framework.scala:314)
+	at org.scalatest.tools.Framework$ScalaTestTask.execute(Framework.scala:472)
+	at sbt.TestRunner.runTest$1(TestFramework.scala:76)
+	at sbt.TestRunner.run(TestFramework.scala:85)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1$$anonfun$apply$8.apply(TestFramework.scala:202)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1$$anonfun$apply$8.apply(TestFramework.scala:202)
+	at sbt.TestFramework$.sbt$TestFramework$$withContextLoader(TestFramework.scala:185)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1.apply(TestFramework.scala:202)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1.apply(TestFramework.scala:202)
+	at sbt.TestFunction.apply(TestFramework.scala:207)
+	at sbt.Tests$$anonfun$9.apply(Tests.scala:216)
+	at sbt.Tests$$anonfun$9.apply(Tests.scala:216)
+	at sbt.std.Transform$$anon$3$$anonfun$apply$2.apply(System.scala:44)
+	at sbt.std.Transform$$anon$3$$anonfun$apply$2.apply(System.scala:44)
+	at sbt.std.Transform$$anon$4.work(System.scala:63)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:226)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:226)
+	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:17)
+	at sbt.Execute.work(Execute.scala:235)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:226)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:226)
+	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:159)
+	at sbt.CompletionService$$anon$2.call(CompletionService.scala:28)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[info] TestMoneyAmountStyle:
+[info] - test_ASCII_ASCII_DECIMAL_COMMA_GROUP3_DOT
+[info] - test_ASCII_ASCII_DECIMAL_POINT_GROUP3_SPACE_print
+[info] - test_ASCII_DECIMAL_COMMA_GROUP3_DOT_print
+[info] - test_ASCII_DECIMAL_COMMA_GROUP3_SPACE
+[info] - test_ASCII_DECIMAL_COMMA_GROUP3_SPACE_print
+[info] - test_ASCII_DECIMAL_COMMA_NO_GROUPING
+[info] - test_ASCII_DECIMAL_COMMA_NO_GROUPING_print
+[info] - test_ASCII_DECIMAL_POINT_GROUP3_COMMA
+[info] - test_ASCII_DECIMAL_POINT_GROUP3_COMMA_print
+[info] - test_ASCII_DECIMAL_POINT_GROUP3_SPACE
+[info] - test_ASCII_DECIMAL_POINT_NO_GROUPING
+[info] - test_ASCII_DECIMAL_POINT_NO_GROUPING_print
+[info] - test_LOCALIZED_GROUPING
+[info] - test_LOCALIZED_GROUPING_print
+[info] - test_LOCALIZED_NO_GROUPING
+[info] - test_LOCALIZED_NO_GROUPING_print
+[info] - test_equals_equal_absValue_false
+[info] - test_equals_equal_absValue_true
+[info] - test_equals_equal_decimalPointChar
+[info] - test_equals_equal_forcedDecimalPoint_false
+[info] - test_equals_equal_forcedDecimalPoint_true
+[info] - test_equals_equal_groupingChar
+[info] - test_equals_equal_groupingSize
+[info] - test_equals_equal_groupingStyle
+[info] - test_equals_equal_negativeChar
+[info] - test_equals_equal_positiveChar
+[info] - test_equals_equal_zeroChar
+[info] - test_equals_notEqual_absValue
+[info] - test_equals_notEqual_decimalPointChar
+[info] - test_equals_notEqual_forcedDecimalPoint
+[info] - test_equals_notEqual_groupingChar
+[info] - test_equals_notEqual_groupingSize
+[info] - test_equals_notEqual_groupingStyle
+[info] - test_equals_notEqual_negativeChar
+[info] - test_equals_notEqual_positiveChar
+[info] - test_equals_notEqual_zeroChar
+[info] - test_equals_null
+[info] - test_equals_otherType
+[info] - test_equals_same
+[info] - test_localize_DE
+[info] - test_localize_DE_fixedDecimal
+[info] - test_localize_DE_fixedGrouping
+[info] - test_localize_DE_fixedNegative
+[info] - test_localize_DE_fixedPositive
+[info] - test_localize_DE_fixedZero
+[info] - test_localize_DE_fixedZeroAndDecimal
+[info] - test_localize_GB
+[info] - test_of_Locale_DE
+[info] - test_of_Locale_GB
+[info] - test_print_groupBeforeDecimal
+[info] - test_toString
+[info] - test_withAbsValue
+[info] - test_withAbsValue_same
+[info] - test_withDecimalPointCharacter
+[info] - test_withDecimalPointCharacter_same
+[info] - test_withDecimalPointCharacter_sameNull
+[info] - test_withForcedDecimalPoint
+[info] - test_withForcedDecimalPoint_same
+[info] - test_withGroupingCharacter
+[info] - test_withGroupingCharacter_same
+[info] - test_withGroupingCharacter_sameNull
+[info] - test_withGroupingSize
+[info] - test_withGroupingSize_negative
+[info] - test_withGroupingSize_same
+[info] - test_withGroupingSize_sameNull
+[info] - test_withGroupingStyle
+[info] - test_withGroupingStyle_same
+[info] - test_withNegativeSignCharacter
+[info] - test_withNegativeSignCharacter_same
+[info] - test_withNegativeSignCharacter_sameNull
+[info] - test_withPositiveSignCharacter
+[info] - test_withPositiveSignCharacter_same
+[info] - test_withPositiveSignCharacter_sameNull
+[info] - test_withZeroCharacter
+[info] - test_withZeroCharacter_same
+[info] - test_withZeroCharacter_sameNull
+[info] TestCurrencyUnit:
+[info] - test_compareTo
+[info] - test_compareTo_null
+[info] - test_constants
+[info] - test_constructor_nullCode
+[info] - test_equals_false
+[info] - test_equals_hashCode
+[info] - test_factory_getInstance_Locale
+[info] - test_factory_getInstance_Locale_nullString
+[info] - test_factory_getInstance_Locale_unknownCurrency
+[info] - test_factory_getInstance_String
+[info] - test_factory_getInstance_String_nullString
+[info] - test_factory_getInstance_String_unknownCurrency
+[info] - test_factory_ofCountry_String
+[info] - test_factory_ofCountry_String_nullString
+[info] - test_factory_ofCountry_String_unknownCurrency
+[info] - test_factory_ofNumericCode_String
+[info] - test_factory_ofNumericCode_String_1char
+[info] - test_factory_ofNumericCode_String_1charNoPad
+[info] - test_factory_ofNumericCode_String_2char
+[info] - test_factory_ofNumericCode_String_2charNoPad
+[info] - test_factory_ofNumericCode_String_empty
+[info] - test_factory_ofNumericCode_String_negative
+[info] - test_factory_ofNumericCode_String_nullString
+[info] - test_factory_ofNumericCode_String_tooLong
+[info] - test_factory_ofNumericCode_String_unknownCurrency
+[info] - test_factory_ofNumericCode_int
+[info] - test_factory_ofNumericCode_int_1char
+[info] - test_factory_ofNumericCode_int_2char
+[info] - test_factory_ofNumericCode_int_negative
+[info] - test_factory_ofNumericCode_int_tooLong
+[info] - test_factory_ofNumericCode_int_unknownCurrency
+[info] - test_factory_of_Currency
+[info] - test_factory_of_Currency_nullCurrency
+[info] - test_factory_of_Locale
+[info] - test_factory_of_Locale_nullLocale
+[info] - test_factory_of_Locale_unknownCurrency
+[info] - test_factory_of_String
+[info] - test_factory_of_String_empty
+[info] - test_factory_of_String_nullString
+[info] - test_factory_of_String_tooLong_unknown
+[info] - test_factory_of_String_tooShort_unknown
+[info] - test_factory_of_String_unknownCurrency
+[info] - test_getCurrencyCode_GBP
+[info] - test_getCurrencyCodes_GBP
+[info] - test_getDecimalPlaces_GBP
+[info] - test_getDecimalPlaces_JPY
+[info] - test_getDecimalPlaces_XXX
+[info] - test_getDefaultFractionDigits_GBP
+[info] - test_getDefaultFractionDigits_JPY
+[info] - test_getDefaultFractionDigits_XXX
+[info] - test_getNumeric3Code_ALL
+[info] - test_getNumeric3Code_AMD
+[info] - test_getNumeric3Code_GBP
+[info] - test_getNumeric3Code_XFU
+[info] - test_getNumericCode_GBP
+[info] - test_getSymbol_GBP
+[info] - test_getSymbol_JPY
+[info] - test_getSymbol_Locale_GBP_France
+[info] - test_getSymbol_Locale_GBP_UK
+[info] - test_getSymbol_Locale_JPY_Japan
+[info] - test_getSymbol_Locale_USD_France
+[info] - test_getSymbol_Locale_USD_UK
+[info] - test_getSymbol_Locale_XXX
+[info] - test_getSymbol_TMT
+[info] - test_getSymbol_TMT_UK
+[info] - test_getSymbol_XXX
+[info] - test_isPseudoCurrency_GBP
+[info] - test_isPseudoCurrency_JPY
+[info] - test_isPseudoCurrency_XXX
+[info] - test_registeredCurrencies
+[info] - test_registeredCurrencies_sorted
+[info] - test_registeredCurrency_alreadyRegisteredCode
+[info] - test_registeredCurrency_alreadyRegisteredCountry
+[info] - test_registeredCurrency_alreadyRegisteredNumericCode
+[info] - test_registeredCurrency_invalidDP_big
+[info] - test_registeredCurrency_invalidDP_small
+[info] - test_registeredCurrency_invalidNumericCode_big
+[info] - test_registeredCurrency_invalidNumericCode_small
+[info] - test_registeredCurrency_invalidStringCode_1letter
+[info] - test_registeredCurrency_invalidStringCode_2letters
+[info] - test_registeredCurrency_invalidStringCode_4letters
+[info] - test_registeredCurrency_invalidStringCode_dash
+[info] - test_registeredCurrency_invalidStringCode_empty
+[info] - test_registeredCurrency_invalidStringCode_lowerCase
+[info] - test_registeredCurrency_invalidStringCode_number
+[info] - test_registeredCurrency_nullCode
+[info] - test_registeredCurrency_nullCountry
+[info] - test_serialization
+[info] - test_serialization_invalidDecimalPlaces
+[info] - test_serialization_invalidNumericCode
+[info] - test_toCurrency
+[info] - test_toString
+[TestNG] Reporter org.testng.reporters.JUnitReportReporter@2bdb5b84 failed
 java.util.ConcurrentModificationException
 	at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:901)
 	at java.util.ArrayList$Itr.next(ArrayList.java:851)
@@ -161,7 +367,13 @@ java.util.ConcurrentModificationException
 
 ===============================================
 Command line suite
-Total tests run: 315, Failures: 2, Skips: 0
+Total tests run: 315, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Command line suite
+Total tests run: 492, Failures: 0, Skips: 0
 ===============================================
 
 
@@ -170,6 +382,19 @@ Command line suite
 Total tests run: 371, Failures: 3, Skips: 0
 ===============================================
 
+[info] TestMoneyParseContext:
+[info] - test_getTextSubstring_afterEnd
+[info] - test_getTextSubstring_beforeStart
+[info] - test_getTextSubstring_ok
+[info] - test_initialState
+[info] - test_isComplete_noAmount
+[info] - test_isComplete_noCurrency
+[info] - test_setError
+[info] - test_setErrorIndex
+[info] - test_setError_withIndex
+[info] - test_setIndex
+[info] - test_toBigMoney_noAmount
+[info] - test_toBigMoney_noCurrency
 [info] TestMoney:
 [info] - test_abs_negative
 [info] - test_abs_positive
@@ -177,32 +402,8 @@ Total tests run: 371, Failures: 3, Skips: 0
 [info] - test_compareTo_Money
 [info] - test_compareTo_currenciesDiffer
 [info] - test_compareTo_wrongType
-[info] - test_constructor_null1 *** FAILED ***
-[info]   java.lang.AssertionError: expected [false] but found [true]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:135)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:305)
-[info]   at org.testng.Assert.assertEquals(Assert.java:315)
-[info]   at org.joda.money.TestMoney.test_constructor_null1(TestMoney.scala:691)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   ...
-[info] - test_constructor_scale *** FAILED ***
-[info]   java.lang.IllegalArgumentException: argument type mismatch
-[info]   at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-[info]   at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-[info]   at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
-[info]   at org.joda.money.TestMoney.test_constructor_scale(TestMoney.scala:706)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:100)
-[info]   ...
+[info] - test_constructor_null1
+[info] - test_constructor_scale
 [info] - test_convertedTo_BigDecimalRoundingMode_negative
 [info] - test_convertedTo_BigDecimalRoundingMode_nullBigDecimal
 [info] - test_convertedTo_BigDecimalRoundingMode_nullCurrency
@@ -510,359 +711,49 @@ Total tests run: 371, Failures: 3, Skips: 0
 [info] - test_withCurrencyUnit_Currency_nullCurrency
 [info] - test_withCurrencyUnit_Currency_same
 [info] - test_withCurrencyUnit_Currency_scaleProblem
-[info] TestMoneyFormatter:
-[info] - test_getLocale
-[info] - test_parseBigMoney_CharSequence *** FAILED ***
-[info]   org.joda.money.format.MoneyFormatException: Text could not be parsed at index 0: 12.34 GBP
-[info]   at org.joda.money.format.MoneyFormatter.parseBigMoney(MoneyFormatter.scala:170)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parseBigMoney_CharSequence(TestMoneyFormatter.scala:188)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:100)
-[info]   at org.testng.internal.Invoker.invokeMethod(Invoker.java:646)
-[info]   at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:811)
-[info]   at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1137)
-[info]   ...
-[info] - test_parseBigMoney_CharSequence_cannotParse
-[info] - test_parseBigMoney_CharSequence_incomplete
-[info] - test_parseBigMoney_CharSequence_incompleteEmptyParser
-[info] - test_parseBigMoney_CharSequence_incompleteLongText
-[info] - test_parseBigMoney_CharSequence_invalidCurrency
-[info] - test_parseBigMoney_CharSequence_missingCurrency *** FAILED ***
-[info]   java.lang.ArrayIndexOutOfBoundsException: 5
-[info]   at org.joda.money.format.AmountPrinterParser.parse(AmountPrinterParser.scala:137)
-[info]   at org.joda.money.format.MultiPrinterParser$$anonfun$parse$1.apply(MultiPrinterParser.scala:41)
-[info]   at org.joda.money.format.MultiPrinterParser$$anonfun$parse$1.apply(MultiPrinterParser.scala:40)
-[info]   at scala.collection.IndexedSeqOptimized$class.foreach(IndexedSeqOptimized.scala:33)
-[info]   at scala.collection.mutable.ArrayOps$ofRef.foreach(ArrayOps.scala:186)
-[info]   at org.joda.money.format.MultiPrinterParser.parse(MultiPrinterParser.scala:40)
-[info]   at org.joda.money.format.MoneyFormatter.parse(MoneyFormatter.scala:222)
-[info]   at org.joda.money.format.MoneyFormatter.parseBigMoney(MoneyFormatter.scala:166)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parseBigMoney_CharSequence_missingCurrency(TestMoneyFormatter.scala:220)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   ...
-[info] - test_parseBigMoney_CharSequence_notFullyParsed
-[info] - test_parseBigMoney_CharSequence_nullCharSequence
-[info] - test_parseBigMoney_noAmount
-[info] - test_parseBigMoney_notFullyParsed
-[info] - test_parseMoney_CharSequence *** FAILED ***
-[info]   org.joda.money.format.MoneyFormatException: Text could not be parsed at index 0: 12.34 GBP
-[info]   at org.joda.money.format.MoneyFormatter.parseBigMoney(MoneyFormatter.scala:170)
-[info]   at org.joda.money.format.MoneyFormatter.parseMoney(MoneyFormatter.scala:197)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parseMoney_CharSequence(TestMoneyFormatter.scala:235)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:100)
-[info]   at org.testng.internal.Invoker.invokeMethod(Invoker.java:646)
-[info]   at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:811)
-[info]   ...
-[info] - test_parseMoney_CharSequence_cannotParse
-[info] - test_parseMoney_CharSequence_incomplete
-[info] - test_parseMoney_CharSequence_invalidCurrency
-[info] - test_parseMoney_CharSequence_notFullyParsed
-[info] - test_parseMoney_CharSequence_nullCharSequence
-[info] - test_parseMoney_noAmount
-[info] - test_parseMoney_notFullyParsed
-[info] - test_parse_CharSequenceInt(12.34 GBP,12.34,GBP,9,-1,false,true,true) *** FAILED ***
-[info]   java.lang.AssertionError: expected [12.34] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(1,2.34 GBP,12.34,GBP,10,-1,false,true,true) *** FAILED ***
-[info]   java.lang.AssertionError: expected [12.34] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(12,.34 GBP,12.34,GBP,10,-1,false,true,true) *** FAILED ***
-[info]   java.lang.AssertionError: expected [12.34] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(12.,34 GBP,12.34,GBP,10,-1,false,true,true) *** FAILED ***
-[info]   java.lang.AssertionError: expected [12.34] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(12.3,4 GBP,12.34,GBP,10,-1,false,true,true) *** FAILED ***
-[info]   java.lang.AssertionError: expected [12.34] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(.12 GBP,0.12,GBP,7,-1,false,true,true) *** FAILED ***
-[info]   java.lang.AssertionError: expected [0.12] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(12. GBP,12,GBP,7,-1,false,true,true) *** FAILED ***
-[info]   java.lang.AssertionError: expected [12] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(12,34 GBP,1234,GBP,9,-1,false,true,true) *** FAILED ***
-[info]   java.lang.AssertionError: expected [1234] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(-12.34 GBP,-12.34,GBP,10,-1,false,true,true) *** FAILED ***
-[info]   java.lang.AssertionError: expected [-12.34] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(+12.34 GBP,12.34,GBP,10,-1,false,true,true) *** FAILED ***
-[info]   java.lang.AssertionError: expected [12.34] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(12.34 GB,12.34,null,6,6,true,false,false) *** FAILED ***
-[info]   java.lang.AssertionError: expected [12.34] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(,12.34 GBP,null,null,0,0,true,false,false)
-[info] - test_parse_CharSequenceInt(12..34 GBP,12,null,3,3,true,false,false) *** FAILED ***
-[info]   java.lang.AssertionError: expected [12] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(12,,34 GBP,12,null,2,2,true,false,false) *** FAILED ***
-[info]   java.lang.AssertionError: expected [12] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(12.34 GBX,12.34,null,6,6,true,false,false) *** FAILED ***
-[info]   java.lang.AssertionError: expected [12.34] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt(12.34 GBPX,12.34,GBP,9,-1,false,false,true) *** FAILED ***
-[info]   java.lang.AssertionError: expected [12.34] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt(TestMoneyFormatter.scala:283)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt_cannotParse
-[info] - test_parse_CharSequenceInt_continueAfterDoubleComma *** FAILED ***
-[info]   java.lang.AssertionError: expected [12] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt_continueAfterDoubleComma(TestMoneyFormatter.scala:350)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt_continueAfterDoubleDecimal *** FAILED ***
-[info]   java.lang.AssertionError: expected [12] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt_continueAfterDoubleDecimal(TestMoneyFormatter.scala:316)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt_continueAfterSingleComma *** FAILED ***
-[info]   java.lang.AssertionError: expected [12] but found [null]
-[info]   at org.testng.Assert.fail(Assert.java:94)
-[info]   at org.testng.Assert.failNotEquals(Assert.java:513)
-[info]   at org.testng.Assert.assertEqualsImpl(Assert.java:130)
-[info]   at org.testng.Assert.assertEquals(Assert.java:116)
-[info]   at org.testng.Assert.assertEquals(Assert.java:179)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_parse_CharSequenceInt_continueAfterSingleComma(TestMoneyFormatter.scala:333)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[info]   at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[info]   at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[info]   at java.lang.reflect.Method.invoke(Method.java:497)
-[info]   ...
-[info] - test_parse_CharSequenceInt_incomplete
-[info] - test_parse_CharSequenceInt_nullCharSequence
-[info] - test_parse_CharSequenceInt_startIndexTooBig
-[info] - test_parse_CharSequenceInt_startIndexTooSmall
-[info] - test_parse_notFullyParsed
-[info] - test_printIO_AppendableBigMoneyProvider
-[info] - test_printIO_AppendableBigMoneyProvider_IOException
-[info] - test_printIO_AppendableBigMoneyProvider_cannotPrint
-[info] - test_printIO_AppendableBigMoneyProvider_nullAppendable
-[info] - test_printIO_AppendableBigMoneyProvider_nullBigMoneyProvider
-[info] - test_printParse_zeroChar *** FAILED ***
-[info]   java.lang.ArrayIndexOutOfBoundsException: 5
-[info]   at org.joda.money.format.AmountPrinterParser.parse(AmountPrinterParser.scala:137)
-[info]   at org.joda.money.format.MultiPrinterParser$$anonfun$parse$1.apply(MultiPrinterParser.scala:41)
-[info]   at org.joda.money.format.MultiPrinterParser$$anonfun$parse$1.apply(MultiPrinterParser.scala:40)
-[info]   at scala.collection.IndexedSeqOptimized$class.foreach(IndexedSeqOptimized.scala:33)
-[info]   at scala.collection.mutable.ArrayOps$ofRef.foreach(ArrayOps.scala:186)
-[info]   at org.joda.money.format.MultiPrinterParser.parse(MultiPrinterParser.scala:40)
-[info]   at org.joda.money.format.MoneyFormatter.parse(MoneyFormatter.scala:222)
-[info]   at org.joda.money.format.MoneyFormatter.parseBigMoney(MoneyFormatter.scala:166)
-[info]   at org.joda.money.format.MoneyFormatter.parseMoney(MoneyFormatter.scala:197)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_printParse_zeroChar(TestMoneyFormatter.scala:387)
-[info]   ...
-[info] - test_print_AppendableBigMoneyProvider
-[info] - test_print_AppendableBigMoneyProvider_IOException *** FAILED ***
-[info]   java.io.IOException:
-[info]   at org.joda.money.format.TestMoneyFormatter$IOAppendable.append(TestMoneyFormatter.scala:37)
-[info]   at org.joda.money.format.MoneyFormatterBuilder$Singletons$CODE$.print(MoneyFormatterBuilder.scala:23)
-[info]   at org.joda.money.format.MultiPrinterParser$$anonfun$print$1.apply(MultiPrinterParser.scala:35)
-[info]   at org.joda.money.format.MultiPrinterParser$$anonfun$print$1.apply(MultiPrinterParser.scala:34)
-[info]   at scala.collection.IndexedSeqOptimized$class.foreach(IndexedSeqOptimized.scala:33)
-[info]   at scala.collection.mutable.ArrayOps$ofRef.foreach(ArrayOps.scala:186)
-[info]   at org.joda.money.format.MultiPrinterParser.print(MultiPrinterParser.scala:34)
-[info]   at org.joda.money.format.MoneyFormatter.printIO(MoneyFormatter.scala:149)
-[info]   at org.joda.money.format.MoneyFormatter.print(MoneyFormatter.scala:125)
-[info]   at org.joda.money.format.TestMoneyFormatter.test_print_AppendableBigMoneyProvider_IOException(TestMoneyFormatter.scala:135)
-[info]   ...
-[info] - test_print_AppendableBigMoneyProvider_cannotPrint
-[info] - test_print_AppendableBigMoneyProvider_nullAppendable
-[info] - test_print_AppendableBigMoneyProvider_nullBigMoneyProvider
-[info] - test_print_BigMoneyProvider
-[info] - test_print_BigMoneyProvider_cannotPrint
-[info] - test_print_BigMoneyProvider_nullBigMoneyProvider
-[info] - test_serialization *** FAILED ***
-[info]   java.io.InvalidClassException: org.joda.money.format.MoneyFormatterBuilder$Singletons$CODE$; no valid constructor
-[info]   at java.io.ObjectStreamClass$ExceptionInfo.newInvalidClassException(ObjectStreamClass.java:150)
-[info]   at java.io.ObjectStreamClass.checkDeserialize(ObjectStreamClass.java:790)
-[info]   at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:1775)
-[info]   at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1351)
-[info]   at java.io.ObjectInputStream.readArray(ObjectInputStream.java:1707)
-[info]   at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1345)
-[info]   at java.io.ObjectInputStream.defaultReadFields(ObjectInputStream.java:2000)
-[info]   at java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:1924)
-[info]   at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:1801)
-[info]   at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1351)
-[info]   ...
-[info] - test_toString
-[info] - test_toString_differentPrinterParser
-[info] - test_withLocale
-[info] - test_withLocale_nullLocale
+[TestNG] Reporter org.testng.reporters.JUnitReportReporter@65eba78a failed
+java.util.ConcurrentModificationException
+	at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:901)
+	at java.util.ArrayList$Itr.next(ArrayList.java:851)
+	at org.testng.reporters.JUnitReportReporter.getNextConfiguration(JUnitReportReporter.java:220)
+	at org.testng.reporters.JUnitReportReporter.generateReport(JUnitReportReporter.java:105)
+	at org.testng.TestNG.generateReports(TestNG.java:1175)
+	at org.testng.TestNG.run(TestNG.java:1102)
+	at org.scalatest.testng.TestNGSuiteLike$class.run(TestNGSuiteLike.scala:261)
+	at org.scalatest.testng.TestNGSuite.run(TestNGSuite.scala:67)
+	at org.scalatest.testng.TestNGSuiteLike$class.runTestNG(TestNGSuiteLike.scala:248)
+	at org.scalatest.testng.TestNGSuite.runTestNG(TestNGSuite.scala:67)
+	at org.scalatest.testng.TestNGSuiteLike$class.run(TestNGSuiteLike.scala:149)
+	at org.scalatest.testng.TestNGSuite.run(TestNGSuite.scala:67)
+	at org.scalatest.tools.Framework.org$scalatest$tools$Framework$$runSuite(Framework.scala:314)
+	at org.scalatest.tools.Framework$ScalaTestTask.execute(Framework.scala:472)
+	at sbt.TestRunner.runTest$1(TestFramework.scala:76)
+	at sbt.TestRunner.run(TestFramework.scala:85)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1$$anonfun$apply$8.apply(TestFramework.scala:202)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1$$anonfun$apply$8.apply(TestFramework.scala:202)
+	at sbt.TestFramework$.sbt$TestFramework$$withContextLoader(TestFramework.scala:185)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1.apply(TestFramework.scala:202)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1.apply(TestFramework.scala:202)
+	at sbt.TestFunction.apply(TestFramework.scala:207)
+	at sbt.Tests$$anonfun$9.apply(Tests.scala:216)
+	at sbt.Tests$$anonfun$9.apply(Tests.scala:216)
+	at sbt.std.Transform$$anon$3$$anonfun$apply$2.apply(System.scala:44)
+	at sbt.std.Transform$$anon$3$$anonfun$apply$2.apply(System.scala:44)
+	at sbt.std.Transform$$anon$4.work(System.scala:63)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:226)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:226)
+	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:17)
+	at sbt.Execute.work(Execute.scala:235)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:226)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:226)
+	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:159)
+	at sbt.CompletionService$$anon$2.call(CompletionService.scala:28)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
 [info] TestMoneyUtils_BigMoney:
 [info] - test_add
 [info] - test_add_differentCurrencies
@@ -892,11 +783,95 @@ Total tests run: 371, Failures: 3, Skips: 0
 [info] - test_subtract_null1
 [info] - test_subtract_null2
 [info] - test_subtract_nullBoth
-[info] TestCurrencyMismatchException:
-[info] - test_new_GBPEUR
-[info] - test_new_GBPnull
-[info] - test_new_nullEUR
-[info] - test_new_nullnull
+[info] TestMoneyFormatter:
+[info] - test_getLocale
+[info] - test_parseBigMoney_CharSequence
+[info] - test_parseBigMoney_CharSequence_cannotParse
+[info] - test_parseBigMoney_CharSequence_incomplete
+[info] - test_parseBigMoney_CharSequence_incompleteEmptyParser
+[info] - test_parseBigMoney_CharSequence_incompleteLongText
+[info] - test_parseBigMoney_CharSequence_invalidCurrency
+[info] - test_parseBigMoney_CharSequence_missingCurrency
+[info] - test_parseBigMoney_CharSequence_notFullyParsed
+[info] - test_parseBigMoney_CharSequence_nullCharSequence
+[info] - test_parseBigMoney_noAmount
+[info] - test_parseBigMoney_notFullyParsed
+[info] - test_parseMoney_CharSequence
+[info] - test_parseMoney_CharSequence_cannotParse
+[info] - test_parseMoney_CharSequence_incomplete
+[info] - test_parseMoney_CharSequence_invalidCurrency
+[info] - test_parseMoney_CharSequence_notFullyParsed
+[info] - test_parseMoney_CharSequence_nullCharSequence
+[info] - test_parseMoney_noAmount
+[info] - test_parseMoney_notFullyParsed
+[info] - test_parse_CharSequenceInt(12.34 GBP,12.34,GBP,9,-1,false,true,true)
+[info] - test_parse_CharSequenceInt(1,2.34 GBP,12.34,GBP,10,-1,false,true,true)
+[info] - test_parse_CharSequenceInt(12,.34 GBP,12.34,GBP,10,-1,false,true,true)
+[info] - test_parse_CharSequenceInt(12.,34 GBP,12.34,GBP,10,-1,false,true,true)
+[info] - test_parse_CharSequenceInt(12.3,4 GBP,12.34,GBP,10,-1,false,true,true)
+[info] - test_parse_CharSequenceInt(.12 GBP,0.12,GBP,7,-1,false,true,true)
+[info] - test_parse_CharSequenceInt(12. GBP,12,GBP,7,-1,false,true,true)
+[info] - test_parse_CharSequenceInt(12,34 GBP,1234,GBP,9,-1,false,true,true)
+[info] - test_parse_CharSequenceInt(-12.34 GBP,-12.34,GBP,10,-1,false,true,true)
+[info] - test_parse_CharSequenceInt(+12.34 GBP,12.34,GBP,10,-1,false,true,true)
+[info] - test_parse_CharSequenceInt(12.34 GB,12.34,null,6,6,true,false,false)
+[info] - test_parse_CharSequenceInt(,12.34 GBP,null,null,0,0,true,false,false)
+[info] - test_parse_CharSequenceInt(12..34 GBP,12,null,3,3,true,false,false)
+[info] - test_parse_CharSequenceInt(12,,34 GBP,12,null,2,2,true,false,false)
+[info] - test_parse_CharSequenceInt(12.34 GBX,12.34,null,6,6,true,false,false)
+[info] - test_parse_CharSequenceInt(12.34 GBPX,12.34,GBP,9,-1,false,false,true)
+[info] - test_parse_CharSequenceInt_cannotParse
+[info] - test_parse_CharSequenceInt_continueAfterDoubleComma
+[info] - test_parse_CharSequenceInt_continueAfterDoubleDecimal
+[info] - test_parse_CharSequenceInt_continueAfterSingleComma
+[info] - test_parse_CharSequenceInt_incomplete
+[info] - test_parse_CharSequenceInt_nullCharSequence
+[info] - test_parse_CharSequenceInt_startIndexTooBig
+[info] - test_parse_CharSequenceInt_startIndexTooSmall
+[info] - test_parse_notFullyParsed
+[info] - test_printIO_AppendableBigMoneyProvider
+[info] - test_printIO_AppendableBigMoneyProvider_IOException
+[info] - test_printIO_AppendableBigMoneyProvider_cannotPrint
+[info] - test_printIO_AppendableBigMoneyProvider_nullAppendable
+[info] - test_printIO_AppendableBigMoneyProvider_nullBigMoneyProvider
+[info] - test_printParse_zeroChar
+[info] - test_print_AppendableBigMoneyProvider
+[info] - test_print_AppendableBigMoneyProvider_IOException *** FAILED ***
+[info]   java.io.IOException:
+[info]   at org.joda.money.format.TestMoneyFormatter$IOAppendable.append(TestMoneyFormatter.scala:37)
+[info]   at org.joda.money.format.MoneyFormatterBuilder$Singletons$CODE$.print(MoneyFormatterBuilder.scala:23)
+[info]   at org.joda.money.format.MultiPrinterParser$$anonfun$print$1.apply(MultiPrinterParser.scala:35)
+[info]   at org.joda.money.format.MultiPrinterParser$$anonfun$print$1.apply(MultiPrinterParser.scala:34)
+[info]   at scala.collection.IndexedSeqOptimized$class.foreach(IndexedSeqOptimized.scala:33)
+[info]   at scala.collection.mutable.ArrayOps$ofRef.foreach(ArrayOps.scala:186)
+[info]   at org.joda.money.format.MultiPrinterParser.print(MultiPrinterParser.scala:34)
+[info]   at org.joda.money.format.MoneyFormatter.printIO(MoneyFormatter.scala:149)
+[info]   at org.joda.money.format.MoneyFormatter.print(MoneyFormatter.scala:125)
+[info]   at org.joda.money.format.TestMoneyFormatter.test_print_AppendableBigMoneyProvider_IOException(TestMoneyFormatter.scala:136)
+[info]   ...
+[info] - test_print_AppendableBigMoneyProvider_cannotPrint
+[info] - test_print_AppendableBigMoneyProvider_nullAppendable
+[info] - test_print_AppendableBigMoneyProvider_nullBigMoneyProvider
+[info] - test_print_BigMoneyProvider
+[info] - test_print_BigMoneyProvider_cannotPrint
+[info] - test_print_BigMoneyProvider_nullBigMoneyProvider
+[info] - test_serialization *** FAILED ***
+[info]   java.io.InvalidClassException: org.joda.money.format.MoneyFormatterBuilder$Singletons$CODE$; no valid constructor
+[info]   at java.io.ObjectStreamClass$ExceptionInfo.newInvalidClassException(ObjectStreamClass.java:150)
+[info]   at java.io.ObjectStreamClass.checkDeserialize(ObjectStreamClass.java:790)
+[info]   at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:1775)
+[info]   at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1351)
+[info]   at java.io.ObjectInputStream.readArray(ObjectInputStream.java:1707)
+[info]   at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1345)
+[info]   at java.io.ObjectInputStream.defaultReadFields(ObjectInputStream.java:2000)
+[info]   at java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:1924)
+[info]   at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:1801)
+[info]   at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1351)
+[info]   ...
+[info] - test_toString
+[info] - test_toString_differentPrinterParser
+[info] - test_withLocale
+[info] - test_withLocale_nullLocale
 [info] TestBigMoney:
 [info] - test_abs_negative
 [info] - test_abs_positive
@@ -1305,16 +1280,548 @@ Total tests run: 371, Failures: 3, Skips: 0
 [info] - test_withScale_int_less
 [info] - test_withScale_int_more
 [info] - test_withScale_int_same
-[info] Run completed in 1 second, 847 milliseconds.
-[info] Total number of tests run: 811
-[info] Suites: completed 6, aborted 0
-[info] Tests: succeeded 782, failed 29, canceled 0, ignored 0, pending 0
-[info] *** 29 TESTS FAILED ***
+[info] TestCurrencyMismatchException:
+[info] - test_new_GBPEUR
+[info] - test_new_GBPnull
+[info] - test_new_nullEUR
+[info] - test_new_nullnull
+[info] TestMoneyUtils_Money:
+[info] - test_add
+[info] - test_add_differentCurrencies
+[info] - test_add_null1
+[info] - test_add_null2
+[info] - test_add_nullBoth
+[info] - test_checkNotNull_notNull
+[info] - test_checkNotNull_null
+[info] - test_isNegative
+[info] - test_isNegativeOrZero
+[info] - test_isPositive
+[info] - test_isPositiveOrZero
+[info] - test_isZero
+[info] - test_max1
+[info] - test_max2
+[info] - test_max_differentCurrencies
+[info] - test_max_null1
+[info] - test_max_null2
+[info] - test_max_nullBoth
+[info] - test_min1
+[info] - test_min2
+[info] - test_min_differentCurrencies
+[info] - test_min_null1
+[info] - test_min_null2
+[info] - test_min_nullBoth
+[info] - test_subtract
+[info] - test_subtract_differentCurrencies
+[info] - test_subtract_null1
+[info] - test_subtract_null2
+[info] - test_subtract_nullBoth
+[info] TestIllegalCurrencyException:
+[info] - test_String
+[info] - test_String_nullString
+[info] TestMoneyFormatterBuilder:
+[info] - test_appendAmount(GBP 2.34,2.34)
+[info] - test_appendAmount(GBP 23.45,23.45)
+[info] - test_appendAmount(GBP 234.56,234.56)
+[info] - test_appendAmount(GBP 2345.67,2,345.67)
+[info] - test_appendAmount(GBP 1234567.89,1,234,567.89)
+[info] - test_appendAmount(GBP 1234.56789,1,234.567,89)
+[info] - test_appendAmount(GBP 1234567891234.1234567891,1,234,567,891,234.123,456,789,1)
+[info] - test_appendAmount(GBP -234.56,-234.56)
+[info] - test_appendAmountLocalized(GBP 2.34,2,34)
+[info] - test_appendAmountLocalized(GBP 23.45,23,45)
+[info] - test_appendAmountLocalized(GBP 234.56,234,56)
+[info] - test_appendAmountLocalized(GBP 2345.67,2 345,67)
+[info] - test_appendAmountLocalized(GBP 1234567.89,1 234 567,89)
+[info] - test_appendAmountLocalized(GBP 1234.56789,1 234,567 89)
+[info] - test_appendAmountLocalized(GBP -234.56,-234,56)
+[info] - test_appendAmountLocalized_GBP_1234_56789_US
+[info] - test_appendAmountLocalized_JPY_2345
+[info] - test_appendAmount_3dp_BHD
+[info] - test_appendAmount_GBP_1234_56789_France
+[info] - test_appendAmount_JPY_2345
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2123456,2123456)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2345.34,2345.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],23456.34,23456.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],234567.34,234567.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2345678.34,2345678.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.3456,2.3456)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.34567,2.34567)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.345678,2.345678)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.3456789,2.3456789)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2123456,2,123,456)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2345.34,2,345.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],23456.34,23,456.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],234567.34,234,567.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2345678.34,2,345,678.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.3456,2.345,6)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.34567,2.345,67)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.345678,2.345,678)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.3456789,2.345,678,9)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2123456,2 123 456)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2345.34,2 345.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],23456.34,23 456.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],234567.34,234 567.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2345678.34,2 345 678.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.3456,2.345 6)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.34567,2.345 67)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.345678,2.345 678)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.3456789,2.345 678 9)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2123456,2,123,456)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2345.34,2,345.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],23456.34,23,456.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],234567.34,234,567.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2345678.34,2,345,678.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.3456,2.3456)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.34567,2.34567)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.345678,2.345678)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.3456789,2.3456789)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2,2.)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2123456,2,123,456.)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2345.34,2,345.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],23456.34,23,456.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],234567.34,234,567.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2345678.34,2,345,678.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.3456,2.345,6)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.34567,2.345,67)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.345678,2.345,678)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.3456789,2.345,678,9)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2,2)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],2123456,2,123,456)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2123456,2,123,456)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2345.34,2,345.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-23456.34,23,456.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-234567.34,234,567.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2345678.34,2,345,678.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.3456,2.345,6)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.34567,2.345,67)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.345678,2.345,678)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.3456789,2.345,678,9)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2123456,2-1-2-3-4-5-6)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.34,2.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],23.34,2-3.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],234.34,2-3-4.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2345.34,2-3-4-5.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],23456.34,2-3-4-5-6.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],234567.34,2-3-4-5-6-7.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2345678.34,2-3-4-5-6-7-8.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.345,2.3-4-5)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.3456,2.3-4-5-6)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.34567,2.3-4-5-6-7)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.345678,2.3-4-5-6-7-8)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.3456789,2.3-4-5-6-7-8-9)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2123456,2-12-34-56)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],234.34,2-34.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2345.34,23-45.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],23456.34,2-34-56.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],234567.34,23-45-67.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2345678.34,2-34-56-78.34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.345,2.34-5)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.3456,2.34-56)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.34567,2.34-56-7)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.345678,2.34-56-78)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.3456789,2.34-56-78-9)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2,2@)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2123456,212,3456@)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.34,2@34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],23.34,23@34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],234.34,234@34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2345.34,2345@34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],23456.34,2,3456@34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],234567.34,23,4567@34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2345678.34,234,5678@34)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.345,2@345)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.3456,2@3456)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.34567,2@3456,7)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.345678,2@3456,78)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.3456789,2@3456,789)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2,C)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2123456,C,BCD,EFG)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.34,C.DE)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],23.34,CD.DE)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],234.34,CDE.DE)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2345.34,C,DEF.DE)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],23456.34,CD,EFG.DE)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],234567.34,CDE,FGH.DE)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2345678.34,C,DEF,GHI.DE)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.345,C.DEF)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.3456,C.DEF,G)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.34567,C.DEF,GH)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.345678,C.DEF,GHI)
+[info] - test_appendAmount_MoneyAmountStyle_BHD(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.3456789,C.DEF,GHI,J)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2123456,2123456)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2345.34,2345.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],23456.34,23456.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],234567.34,234567.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2345678.34,2345678.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.3456,2.3456)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.34567,2.34567)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.345678,2.345678)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.3456789,2.3456789)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2123456,2,123,456)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2345.34,2,345.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],23456.34,23,456.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],234567.34,234,567.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2345678.34,2,345,678.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.3456,2.345,6)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.34567,2.345,67)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.345678,2.345,678)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.3456789,2.345,678,9)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2123456,2 123 456)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2345.34,2 345.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],23456.34,23 456.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],234567.34,234 567.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2345678.34,2 345 678.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.3456,2.345 6)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.34567,2.345 67)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.345678,2.345 678)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.3456789,2.345 678 9)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2123456,2,123,456)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2345.34,2,345.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],23456.34,23,456.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],234567.34,234,567.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2345678.34,2,345,678.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.3456,2.3456)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.34567,2.34567)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.345678,2.345678)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.3456789,2.3456789)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2,2.)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2123456,2,123,456.)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2345.34,2,345.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],23456.34,23,456.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],234567.34,234,567.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2345678.34,2,345,678.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.3456,2.345,6)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.34567,2.345,67)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.345678,2.345,678)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.3456789,2.345,678,9)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2,2)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],2123456,2,123,456)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2123456,2,123,456)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2345.34,2,345.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-23456.34,23,456.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-234567.34,234,567.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2345678.34,2,345,678.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.3456,2.345,6)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.34567,2.345,67)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.345678,2.345,678)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.3456789,2.345,678,9)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2123456,2-1-2-3-4-5-6)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.34,2.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],23.34,2-3.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],234.34,2-3-4.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2345.34,2-3-4-5.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],23456.34,2-3-4-5-6.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],234567.34,2-3-4-5-6-7.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2345678.34,2-3-4-5-6-7-8.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.345,2.3-4-5)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.3456,2.3-4-5-6)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.34567,2.3-4-5-6-7)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.345678,2.3-4-5-6-7-8)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.3456789,2.3-4-5-6-7-8-9)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2123456,2-12-34-56)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],234.34,2-34.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2345.34,23-45.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],23456.34,2-34-56.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],234567.34,23-45-67.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2345678.34,2-34-56-78.34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.345,2.34-5)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.3456,2.34-56)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.34567,2.34-56-7)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.345678,2.34-56-78)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.3456789,2.34-56-78-9)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2,2@)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2123456,212,3456@)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.34,2@34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],23.34,23@34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],234.34,234@34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2345.34,2345@34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],23456.34,2,3456@34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],234567.34,23,4567@34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2345678.34,234,5678@34)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.345,2@345)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.3456,2@3456)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.34567,2@3456,7)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.345678,2@3456,78)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.3456789,2@3456,789)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2,C)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2123456,C,BCD,EFG)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.34,C.DE)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],23.34,CD.DE)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],234.34,CDE.DE)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2345.34,C,DEF.DE)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],23456.34,CD,EFG.DE)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],234567.34,CDE,FGH.DE)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2345678.34,C,DEF,GHI.DE)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.345,C.DEF)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.3456,C.DEF,G)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.34567,C.DEF,GH)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.345678,C.DEF,GHI)
+[info] - test_appendAmount_MoneyAmountStyle_GBP(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.3456789,C.DEF,GHI,J)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2123456,2123456)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2345.34,2345.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],23456.34,23456.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],234567.34,234567.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2345678.34,2345678.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.3456,2.3456)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.34567,2.34567)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.345678,2.345678)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','NONE,,','3',false',false],2.3456789,2.3456789)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2123456,2,123,456)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2345.34,2,345.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],23456.34,23,456.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],234567.34,234,567.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2345678.34,2,345,678.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.3456,2.345,6)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.34567,2.345,67)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.345678,2.345,678)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',false],2.3456789,2.345,678,9)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2123456,2 123 456)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2345.34,2 345.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],23456.34,23 456.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],234567.34,234 567.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2345678.34,2 345 678.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.3456,2.345 6)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.34567,2.345 67)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.345678,2.345 678)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL, ','3',false',false],2.3456789,2.345 678 9)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2123456,2,123,456)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2345.34,2,345.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],23456.34,23,456.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],234567.34,234,567.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2345678.34,2,345,678.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.3456,2.3456)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.34567,2.34567)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.345678,2.345678)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','BEFORE_DECIMAL_POINT,,','3',false',false],2.3456789,2.3456789)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2,2.)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2123456,2,123,456.)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2345.34,2,345.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],23456.34,23,456.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],234567.34,234,567.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2345678.34,2,345,678.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.3456,2.345,6)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.34567,2.345,67)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.345678,2.345,678)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',true',false],2.3456789,2.345,678,9)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2,2)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],2123456,2,123,456)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2123456,2,123,456)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-234.34,234.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2345.34,2,345.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-23456.34,23,456.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-234567.34,234,567.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2345678.34,2,345,678.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.345,2.345)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.3456,2.345,6)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.34567,2.345,67)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.345678,2.345,678)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,,','3',false',true],-2.3456789,2.345,678,9)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2123456,2-1-2-3-4-5-6)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.34,2.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],23.34,2-3.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],234.34,2-3-4.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2345.34,2-3-4-5.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],23456.34,2-3-4-5-6.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],234567.34,2-3-4-5-6-7.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2345678.34,2-3-4-5-6-7-8.3-4)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.345,2.3-4-5)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.3456,2.3-4-5-6)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.34567,2.3-4-5-6-7)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.345678,2.3-4-5-6-7-8)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','1',false',false],2.3456789,2.3-4-5-6-7-8-9)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2,2)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2123456,2-12-34-56)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.34,2.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],23.34,23.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],234.34,2-34.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2345.34,23-45.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],23456.34,2-34-56.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],234567.34,23-45-67.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2345678.34,2-34-56-78.34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.345,2.34-5)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.3456,2.34-56)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.34567,2.34-56-7)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.345678,2.34-56-78)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','.','FULL,-','2',false',false],2.3456789,2.34-56-78-9)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2,2@)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2123456,212,3456@)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.34,2@34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],23.34,23@34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],234.34,234@34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2345.34,2345@34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],23456.34,2,3456@34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],234567.34,23,4567@34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2345678.34,234,5678@34)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.345,2@345)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.3456,2@3456)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.34567,2@3456,7)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.345678,2@3456,78)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['0','+','-','@','FULL,,','4',true',false],2.3456789,2@3456,789)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2,C)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2123456,C,BCD,EFG)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.34,C.DE)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],23.34,CD.DE)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],234.34,CDE.DE)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2345.34,C,DEF.DE)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],23456.34,CD,EFG.DE)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],234567.34,CDE,FGH.DE)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2345678.34,C,DEF,GHI.DE)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.345,C.DEF)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.3456,C.DEF,G)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.34567,C.DEF,GH)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.345678,C.DEF,GHI)
+[info] - test_appendAmount_MoneyAmountStyle_JPY(MoneyAmountStyle['A','+','-','.','FULL,,','3',false',false],2.3456789,C.DEF,GHI,J)
+[info] - test_appendAmount_MoneyAmountStyle_JPY_issue49
+[info] - test_appendAmount_MoneyAmountStyle_null
+[info] - test_appendAmount_parseExcessGrouping
+[info] - test_appendAmount_parseExtendedGroupingSize(GBP 2.34,2.34)
+[info] - test_appendAmount_parseExtendedGroupingSize(GBP 23.45,23.45)
+[info] - test_appendAmount_parseExtendedGroupingSize(GBP 234.56,234.56)
+[info] - test_appendAmount_parseExtendedGroupingSize(GBP 2345.67,2,345.67)
+[info] - test_appendAmount_parseExtendedGroupingSize(GBP 1234567.89,12,34,567.89)
+[info] - test_appendAmount_parseExtendedGroupingSize(GBP 1234.56789,1,234.567,89)
+[info] - test_appendAmount_parseExtendedGroupingSize(GBP 1234567891234.1234567891,12,34,56,78,91,234.123,45,67,89,1)
+[info] - test_appendAmount_parseExtendedGroupingSize(GBP -234.56,-234.56)
+[info] - test_appendCurrencyCode_parse_empty
+[info] - test_appendCurrencyCode_parse_ok
+[info] - test_appendCurrencyCode_parse_tooShort
+[info] - test_appendCurrencyCode_print
+[info] - test_appendCurrencyNumeric3Code_parse_badCurrency
+[info] - test_appendCurrencyNumeric3Code_parse_empty
+[info] - test_appendCurrencyNumeric3Code_parse_ok
+[info] - test_appendCurrencyNumeric3Code_parse_tooShort
+[info] - test_appendCurrencyNumeric3Code_print
+[info] - test_appendCurrencyNumericCode_parse_badCurrency
+[info] - test_appendCurrencyNumericCode_parse_empty
+[info] - test_appendCurrencyNumericCode_parse_ok
+[info] - test_appendCurrencyNumericCode_parse_ok_notPadded1
+[info] - test_appendCurrencyNumericCode_parse_ok_notPadded2
+[info] - test_appendCurrencyNumericCode_parse_ok_padded
+[info] - test_appendCurrencyNumericCode_parse_tooShort
+[info] - test_appendCurrencyNumericCode_print
+[info] - test_appendCurrencySymbolLocalized_parse
+[info] - test_appendCurrencySymbolLocalized_print
+[info] - test_appendLiteral_parse_noMatch
+[info] - test_appendLiteral_parse_ok
+[info] - test_appendLiteral_parse_tooShort
+[info] - test_appendLiteral_print
+[info] - test_appendLiteral_print_empty
+[info] - test_appendLiteral_print_null
+[info] - test_appendSigned_PN
+[info] - test_appendSigned_PZN
+[info] - test_appendSigned_PZN_edgeCases
+[info] - test_append_MoneyFormatter
+[info] - test_append_MoneyPrinterMoneyParser_parser
+[info] - test_append_MoneyPrinterMoneyParser_printer
+[info] - test_append_MoneyPrinter_nullMoneyPrinter_nullMoneyParser
+[info] - test_empty
+[info] - test_toFormatter_Locale
+[info] - test_toFormatter_defaultLocale
+[info] Fast optimizing /Users/eric/Work/scala-joda-money/js/target/scala-2.11/scala-joda-money-test-fastopt.js
+[info] Run completed in 2 seconds, 182 milliseconds.
+[info] Total number of tests run: 1485
+[info] Suites: completed 11, aborted 0
+[info] Tests: succeeded 1480, failed 5, canceled 0, ignored 0, pending 0
+[info] *** 5 TESTS FAILED ***
 [error] Failed tests:
 [error] 	org.joda.money.TestBigMoney
 [error] 	org.joda.money.format.TestMoneyFormatter
-[error] 	org.joda.money.TestMoney
 [error] (scalajodamoneyJVM/test:test) sbt.TestsFailedException: Tests unsuccessful
-[error] Total time: 23 s, completed Nov 9, 2016 9:20:00 AM
+[error] Total time: 10 s, completed Nov 9, 2016 1:24:24 PM
+eric@Erics-MacBook-Pro:~/Work/scala-joda-money$
 
 ```
