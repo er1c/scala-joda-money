@@ -1,43 +1,49 @@
 package org.joda.money
 
-import org.testng.Assert.assertEquals
-import org.testng.Assert.assertSame
-import java.lang.reflect.Constructor
-import java.lang.reflect.Modifier
+import org.scalatest.testng.TestNGSuite
+import org.testng.Assert._
 import org.testng.annotations.Test
-import TestMoneyUtils_BigMoney._
+import TestMoneyUtils_Money._
 //remove if not needed
 import scala.collection.JavaConversions._
 
-object TestMoneyUtils_BigMoney {
+object TestMoneyUtils_Money {
 
-  private val GBP_0 = BigMoney.parse("GBP 0")
+  private val GBP_0 = Money.parse("GBP 0")
 
-  private val GBP_20 = BigMoney.parse("GBP 20")
+  private val GBP_20 = Money.parse("GBP 20")
 
-  private val GBP_30 = BigMoney.parse("GBP 30")
+  private val GBP_30 = Money.parse("GBP 30")
 
-  private val GBP_50 = BigMoney.parse("GBP 50")
+  private val GBP_50 = Money.parse("GBP 50")
 
-  private val GBP_M10 = BigMoney.parse("GBP -10")
+  private val GBP_M10 = Money.parse("GBP -10")
 
-  private val GBP_M30 = BigMoney.parse("GBP -30")
+  private val GBP_M30 = Money.parse("GBP -30")
 
-  private val EUR_30 = BigMoney.parse("EUR 30")
+  private val EUR_30 = Money.parse("EUR 30")
 }
 
 /**
  * Test MoneyUtils.
  */
 @Test
-class TestMoneyUtils_BigMoney {
+class TestMoneyUtils_Money extends TestNGSuite {
 
-  def test_constructor() {
-    /*val con = classOf[MoneyUtils].getDeclaredConstructor
-    assertEquals(Modifier.isPrivate(con.getModifiers), true)
-    con.setAccessible(true)
-    con.newInstance()*/
-    MoneyUtils
+  def test_checkNotNull_notNull() {
+    MoneyUtils.checkNotNull(new AnyRef(), "")
+  }
+
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
+  def test_checkNotNull_null() {
+    try {
+      MoneyUtils.checkNotNull(null, "Hello")
+    } catch {
+      case ex: NullPointerException => {
+        assertEquals(ex.getMessage, "Hello")
+        throw ex
+      }
+    }
   }
 
   def test_isZero() {
@@ -89,15 +95,15 @@ class TestMoneyUtils_BigMoney {
   }
 
   def test_max_null1() {
-    assertSame(MoneyUtils.max(null.asInstanceOf[BigMoney], GBP_30), GBP_30)
+    assertSame(MoneyUtils.max(null.asInstanceOf[Money], GBP_30), GBP_30)
   }
 
   def test_max_null2() {
-    assertSame(MoneyUtils.max(GBP_20, null.asInstanceOf[BigMoney]), GBP_20)
+    assertSame(MoneyUtils.max(GBP_20, null.asInstanceOf[Money]), GBP_20)
   }
 
   def test_max_nullBoth() {
-    assertEquals(MoneyUtils.max(null.asInstanceOf[BigMoney], null.asInstanceOf[BigMoney]), null)
+    assertEquals(MoneyUtils.max(null.asInstanceOf[Money], null.asInstanceOf[Money]), null)
   }
 
   def test_min1() {
@@ -114,15 +120,15 @@ class TestMoneyUtils_BigMoney {
   }
 
   def test_min_null1() {
-    assertSame(MoneyUtils.min(null.asInstanceOf[BigMoney], GBP_30), GBP_30)
+    assertSame(MoneyUtils.min(null.asInstanceOf[Money], GBP_30), GBP_30)
   }
 
   def test_min_null2() {
-    assertSame(MoneyUtils.min(GBP_20, null.asInstanceOf[BigMoney]), GBP_20)
+    assertSame(MoneyUtils.min(GBP_20, null.asInstanceOf[Money]), GBP_20)
   }
 
   def test_min_nullBoth() {
-    assertEquals(MoneyUtils.min(null.asInstanceOf[BigMoney], null.asInstanceOf[BigMoney]), null)
+    assertEquals(MoneyUtils.min(null.asInstanceOf[Money], null.asInstanceOf[Money]), null)
   }
 
   def test_add() {
@@ -135,15 +141,15 @@ class TestMoneyUtils_BigMoney {
   }
 
   def test_add_null1() {
-    assertSame(MoneyUtils.add(null.asInstanceOf[BigMoney], GBP_30), GBP_30)
+    assertSame(MoneyUtils.add(null.asInstanceOf[Money], GBP_30), GBP_30)
   }
 
   def test_add_null2() {
-    assertSame(MoneyUtils.add(GBP_20, null.asInstanceOf[BigMoney]), GBP_20)
+    assertSame(MoneyUtils.add(GBP_20, null.asInstanceOf[Money]), GBP_20)
   }
 
   def test_add_nullBoth() {
-    assertEquals(MoneyUtils.add(null.asInstanceOf[BigMoney], null.asInstanceOf[BigMoney]), null)
+    assertEquals(MoneyUtils.add(null.asInstanceOf[Money], null.asInstanceOf[Money]), null)
   }
 
   def test_subtract() {
@@ -156,14 +162,14 @@ class TestMoneyUtils_BigMoney {
   }
 
   def test_subtract_null1() {
-    assertEquals(MoneyUtils.subtract(null.asInstanceOf[BigMoney], GBP_30), GBP_M30)
+    assertEquals(MoneyUtils.subtract(null.asInstanceOf[Money], GBP_30), GBP_M30)
   }
 
   def test_subtract_null2() {
-    assertSame(MoneyUtils.subtract(GBP_20, null.asInstanceOf[BigMoney]), GBP_20)
+    assertSame(MoneyUtils.subtract(GBP_20, null.asInstanceOf[Money]), GBP_20)
   }
 
   def test_subtract_nullBoth() {
-    assertEquals(MoneyUtils.subtract(null.asInstanceOf[BigMoney], null.asInstanceOf[BigMoney]), null)
+    assertEquals(MoneyUtils.subtract(null.asInstanceOf[Money], null.asInstanceOf[Money]), null)
   }
 }

@@ -1,6 +1,7 @@
 package org.joda.money
 
-import org.testng.Assert.assertEquals
+import org.scalatest.testng.TestNGSuite
+import org.testng.Assert._
 import org.testng.annotations.Test
 import TestCurrencyMismatchException._
 //remove if not needed
@@ -17,7 +18,7 @@ object TestCurrencyMismatchException {
  * Test CurrencyMismatchException.
  */
 @Test
-class TestCurrencyMismatchException {
+class TestCurrencyMismatchException extends TestNGSuite {
 
   def test_new_GBPEUR() {
     val test = new CurrencyMismatchException(GBP, EUR)

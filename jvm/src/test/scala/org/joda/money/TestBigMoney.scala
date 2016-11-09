@@ -1,9 +1,6 @@
 package org.joda.money
 
-import org.scalatest.Assertions
-import org.testng.Assert.assertEquals
-import org.testng.Assert.assertSame
-import org.testng.Assert.fail
+
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.InvalidObjectException
@@ -17,8 +14,9 @@ import java.math.BigInteger
 import java.math.RoundingMode
 import java.util.Arrays
 import java.util.Collections
-import org.testng.annotations.DataProvider
-import org.testng.annotations.Test
+import org.scalatest.testng.TestNGSuite
+import org.testng.Assert._
+import org.testng.annotations.{AfterMethod, BeforeMethod, DataProvider, Test}
 import TestBigMoney._
 import collection.JavaConverters._
 
@@ -94,7 +92,7 @@ object TestBigMoney {
  * Test BigMoney.
  */
 @Test
-class TestBigMoney {
+class TestBigMoney extends TestNGSuite {
 
   def test_factory_of_Currency_BigDecimal() {
     val test = BigMoney.of(GBP, BIGDEC_2_345)

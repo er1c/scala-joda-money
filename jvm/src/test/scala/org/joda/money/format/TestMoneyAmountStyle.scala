@@ -1,18 +1,13 @@
 package org.joda.money.format
 
-import org.testng.Assert.assertEquals
-import org.testng.Assert.assertSame
-import org.testng.Assert.assertTrue
+import org.scalatest.Assertions
+import org.testng.Assert._
+import org.testng.annotations.{AfterMethod, BeforeMethod, Test}
 import java.math.BigDecimal
 import java.util.Locale
 import org.joda.money.BigMoney
 import org.joda.money.CurrencyUnit
-import org.testng.annotations.AfterMethod
-import org.testng.annotations.BeforeMethod
-import org.testng.annotations.Test
 import TestMoneyAmountStyle._
-//remove if not needed
-import scala.collection.JavaConversions._
 
 object TestMoneyAmountStyle {
 
@@ -29,7 +24,7 @@ object TestMoneyAmountStyle {
  * Test MoneyAmountStyle.
  */
 @Test
-class TestMoneyAmountStyle {
+class TestMoneyAmountStyle extends Assertions {
 
   @BeforeMethod
   def beforeMethod() {
