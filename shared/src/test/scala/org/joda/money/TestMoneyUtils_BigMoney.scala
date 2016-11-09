@@ -33,10 +33,11 @@ object TestMoneyUtils_BigMoney {
 class TestMoneyUtils_BigMoney {
 
   def test_constructor() {
-    val con = classOf[MoneyUtils].getDeclaredConstructor
+    /*val con = classOf[MoneyUtils].getDeclaredConstructor
     assertEquals(Modifier.isPrivate(con.getModifiers), true)
     con.setAccessible(true)
-    con.newInstance()
+    con.newInstance()*/
+    MoneyUtils
   }
 
   def test_isZero() {
@@ -82,7 +83,7 @@ class TestMoneyUtils_BigMoney {
     assertSame(MoneyUtils.max(GBP_30, GBP_20), GBP_30)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_max_differentCurrencies() {
     MoneyUtils.max(GBP_20, EUR_30)
   }
@@ -107,7 +108,7 @@ class TestMoneyUtils_BigMoney {
     assertSame(MoneyUtils.min(GBP_30, GBP_20), GBP_20)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_min_differentCurrencies() {
     MoneyUtils.min(GBP_20, EUR_30)
   }
@@ -128,7 +129,7 @@ class TestMoneyUtils_BigMoney {
     assertEquals(MoneyUtils.add(GBP_20, GBP_30), GBP_50)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_add_differentCurrencies() {
     MoneyUtils.add(GBP_20, EUR_30)
   }
@@ -149,7 +150,7 @@ class TestMoneyUtils_BigMoney {
     assertEquals(MoneyUtils.subtract(GBP_20, GBP_30), GBP_M10)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_subtract_differentCurrencies() {
     MoneyUtils.subtract(GBP_20, EUR_30)
   }

@@ -11,7 +11,7 @@ import scala.collection.JavaConversions._
 @Test
 class TestMoneyFormatterException {
 
-  @Test(expectedExceptions = classOf[IOException])
+  @Test(expectedExceptions = Array(classOf[IOException]))
   def test_MoneyFormatException_IOException_notRethrown() {
     val test = new MoneyFormatException("Error", new IOException("Inner"))
     test.rethrowIOException()

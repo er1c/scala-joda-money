@@ -46,84 +46,84 @@ class TestCurrencyUnit {
     assertEquals(curList1, curList2)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_registeredCurrency_nullCode() {
-    CurrencyUnit.registerCurrency(null, 991, 2, Arrays.asList("TS":_*))
+    CurrencyUnit.registerCurrency(null, 991, 2, Arrays.asList("TS"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_invalidStringCode_empty() {
-    CurrencyUnit.registerCurrency("", 991, 2, Arrays.asList("TS":_*))
+    CurrencyUnit.registerCurrency("", 991, 2, Arrays.asList("TS"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_invalidStringCode_1letter() {
-    CurrencyUnit.registerCurrency("A", 991, 2, Arrays.asList("TS":_*))
+    CurrencyUnit.registerCurrency("A", 991, 2, Arrays.asList("TS"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_invalidStringCode_2letters() {
-    CurrencyUnit.registerCurrency("AB", 991, 2, Arrays.asList("TS":_*))
+    CurrencyUnit.registerCurrency("AB", 991, 2, Arrays.asList("TS"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_invalidStringCode_4letters() {
-    CurrencyUnit.registerCurrency("ABCD", 991, 2, Arrays.asList("TS":_*))
+    CurrencyUnit.registerCurrency("ABCD", 991, 2, Arrays.asList("TS"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_invalidStringCode_lowerCase() {
-    CurrencyUnit.registerCurrency("xxA", 991, 2, Arrays.asList("xx":_*))
+    CurrencyUnit.registerCurrency("xxA", 991, 2, Arrays.asList("xx"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_invalidStringCode_number() {
-    CurrencyUnit.registerCurrency("123", 991, 2, Arrays.asList("TS":_*))
+    CurrencyUnit.registerCurrency("123", 991, 2, Arrays.asList("TS"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_invalidStringCode_dash() {
-    CurrencyUnit.registerCurrency("A-", 991, 2, Arrays.asList("TS":_*))
+    CurrencyUnit.registerCurrency("A-", 991, 2, Arrays.asList("TS"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_invalidNumericCode_small() {
-    CurrencyUnit.registerCurrency("TST", -2, 2, Arrays.asList("TS":_*))
+    CurrencyUnit.registerCurrency("TST", -2, 2, Arrays.asList("TS"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_invalidNumericCode_big() {
-    CurrencyUnit.registerCurrency("TST", 1000, 2, Arrays.asList("TS":_*))
+    CurrencyUnit.registerCurrency("TST", 1000, 2, Arrays.asList("TS"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_invalidDP_small() {
-    CurrencyUnit.registerCurrency("TST", 991, -2, Arrays.asList("TS":_*))
+    CurrencyUnit.registerCurrency("TST", 991, -2, Arrays.asList("TS"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_invalidDP_big() {
-    CurrencyUnit.registerCurrency("TST", 991, 10, Arrays.asList("TS":_*))
+    CurrencyUnit.registerCurrency("TST", 991, 10, Arrays.asList("TS"))
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_registeredCurrency_nullCountry() {
-    CurrencyUnit.registerCurrency("TST", 991, 2, Arrays.asList(null.asInstanceOf[String]:_*))
+    CurrencyUnit.registerCurrency("TST", 991, 2, Arrays.asList(null.asInstanceOf[String]))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_alreadyRegisteredCode() {
-    CurrencyUnit.registerCurrency("GBP", 991, 2, Arrays.asList("GB":_*))
+    CurrencyUnit.registerCurrency("GBP", 991, 2, Arrays.asList("GB"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_alreadyRegisteredNumericCode() {
-    CurrencyUnit.registerCurrency("TST", 826, 2, Arrays.asList("TS":_*))
+    CurrencyUnit.registerCurrency("TST", 826, 2, Arrays.asList("TS"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_registeredCurrency_alreadyRegisteredCountry() {
-    CurrencyUnit.registerCurrency("GBX", 991, 2, Arrays.asList("GB":_*))
+    CurrencyUnit.registerCurrency("GBX", 991, 2, Arrays.asList("GB"))
   }
 
   def test_constants() {
@@ -136,7 +136,7 @@ class TestCurrencyUnit {
     assertEquals(CurrencyUnit.CAD, CurrencyUnit.of("CAD"))
   }
 
-  @Test(expectedExceptions = classOf[AssertionError])
+  @Test(expectedExceptions = Array(classOf[AssertionError]))
   def test_constructor_nullCode() {
     new CurrencyUnit(null, 1.toShort, 2.toShort)
   }
@@ -146,7 +146,7 @@ class TestCurrencyUnit {
     assertEquals(test.getCode, "GBP")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_of_Currency_nullCurrency() {
     CurrencyUnit.of(null.asInstanceOf[Currency])
   }
@@ -156,12 +156,12 @@ class TestCurrencyUnit {
     assertEquals(test.getCode, "GBP")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_of_String_nullString() {
     CurrencyUnit.of(null.asInstanceOf[String])
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_of_String_unknownCurrency() {
     try {
       CurrencyUnit.of("ABC")
@@ -173,17 +173,17 @@ class TestCurrencyUnit {
     }
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_of_String_empty() {
     CurrencyUnit.of("")
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_of_String_tooShort_unknown() {
     CurrencyUnit.of("AB")
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_of_String_tooLong_unknown() {
     CurrencyUnit.of("ABCD")
   }
@@ -213,12 +213,12 @@ class TestCurrencyUnit {
     assertEquals(test.getCode, "ALL")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_ofNumericCode_String_nullString() {
     CurrencyUnit.ofNumericCode(null.asInstanceOf[String])
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_ofNumericCode_String_unknownCurrency() {
     try {
       CurrencyUnit.ofNumericCode("111")
@@ -230,12 +230,12 @@ class TestCurrencyUnit {
     }
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_ofNumericCode_String_negative() {
     CurrencyUnit.ofNumericCode("-1")
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_ofNumericCode_String_empty() {
     try {
       CurrencyUnit.ofNumericCode("")
@@ -247,7 +247,7 @@ class TestCurrencyUnit {
     }
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_ofNumericCode_String_tooLong() {
     try {
       CurrencyUnit.ofNumericCode("1234")
@@ -274,7 +274,7 @@ class TestCurrencyUnit {
     assertEquals(test.getCode, "ALL")
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_ofNumericCode_int_unknownCurrency() {
     try {
       CurrencyUnit.ofNumericCode(111)
@@ -286,7 +286,7 @@ class TestCurrencyUnit {
     }
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_ofNumericCode_int_negative() {
     try {
       CurrencyUnit.ofNumericCode(-1)
@@ -298,7 +298,7 @@ class TestCurrencyUnit {
     }
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_ofNumericCode_int_tooLong() {
     try {
       CurrencyUnit.ofNumericCode(1234)
@@ -315,12 +315,12 @@ class TestCurrencyUnit {
     assertEquals(test.getCode, "GBP")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_of_Locale_nullLocale() {
     CurrencyUnit.of(null.asInstanceOf[Locale])
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_of_Locale_unknownCurrency() {
     try {
       CurrencyUnit.of(new Locale("en", "XY"))
@@ -337,12 +337,12 @@ class TestCurrencyUnit {
     assertEquals(test.getCode, "GBP")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_ofCountry_String_nullString() {
     CurrencyUnit.ofCountry(null.asInstanceOf[String])
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_ofCountry_String_unknownCurrency() {
     try {
       CurrencyUnit.ofCountry("gb")
@@ -359,12 +359,12 @@ class TestCurrencyUnit {
     assertEquals(test.getCode, "GBP")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_getInstance_String_nullString() {
     CurrencyUnit.getInstance(null.asInstanceOf[String])
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_getInstance_String_unknownCurrency() {
     CurrencyUnit.getInstance("ABC")
   }
@@ -374,12 +374,12 @@ class TestCurrencyUnit {
     assertEquals(test.getCode, "GBP")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_getInstance_Locale_nullString() {
     CurrencyUnit.getInstance(null.asInstanceOf[Locale])
   }
 
-  @Test(expectedExceptions = classOf[IllegalCurrencyException])
+  @Test(expectedExceptions = Array(classOf[IllegalCurrencyException]))
   def test_factory_getInstance_Locale_unknownCurrency() {
     CurrencyUnit.getInstance(new Locale("en", "XY"))
   }
@@ -395,7 +395,7 @@ class TestCurrencyUnit {
     assertEquals(input, cu)
   }
 
-  @Test(expectedExceptions = classOf[InvalidObjectException])
+  @Test(expectedExceptions = Array(classOf[InvalidObjectException]))
   def test_serialization_invalidNumericCode() {
     val cu = new CurrencyUnit("GBP", 234.toShort, 2.toShort)
     val baos = new ByteArrayOutputStream()
@@ -414,7 +414,7 @@ class TestCurrencyUnit {
     }
   }
 
-  @Test(expectedExceptions = classOf[InvalidObjectException])
+  @Test(expectedExceptions = Array(classOf[InvalidObjectException]))
   def test_serialization_invalidDecimalPlaces() {
     val cu = new CurrencyUnit("GBP", 826.toShort, 1.toShort)
     val baos = new ByteArrayOutputStream()
@@ -660,7 +660,7 @@ class TestCurrencyUnit {
     assertTrue(c.compareTo(b) > 0)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_compareTo_null() {
     CurrencyUnit.of("EUR").compareTo(null)
   }

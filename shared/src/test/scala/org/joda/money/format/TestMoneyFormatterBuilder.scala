@@ -387,7 +387,7 @@ class TestMoneyFormatterBuilder {
     assertEquals(test.toString, "${amount}")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_appendAmount_MoneyAmountStyle_null() {
     iBuilder.appendAmount(null.asInstanceOf[MoneyAmountStyle])
   }

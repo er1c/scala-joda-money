@@ -483,7 +483,7 @@ class TestMoneyAmountStyle {
     assertSame(test, base)
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_withGroupingSize_negative() {
     val base = MoneyAmountStyle.LOCALIZED_GROUPING
     base.withGroupingSize(-1)

@@ -34,7 +34,7 @@ class TestMoneyUtils_Money {
     MoneyUtils.checkNotNull(new AnyRef(), "")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_checkNotNull_null() {
     try {
       MoneyUtils.checkNotNull(null, "Hello")
@@ -89,7 +89,7 @@ class TestMoneyUtils_Money {
     assertSame(MoneyUtils.max(GBP_30, GBP_20), GBP_30)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_max_differentCurrencies() {
     MoneyUtils.max(GBP_20, EUR_30)
   }
@@ -114,7 +114,7 @@ class TestMoneyUtils_Money {
     assertSame(MoneyUtils.min(GBP_30, GBP_20), GBP_20)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_min_differentCurrencies() {
     MoneyUtils.min(GBP_20, EUR_30)
   }
@@ -135,7 +135,7 @@ class TestMoneyUtils_Money {
     assertEquals(MoneyUtils.add(GBP_20, GBP_30), GBP_50)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_add_differentCurrencies() {
     MoneyUtils.add(GBP_20, EUR_30)
   }
@@ -156,7 +156,7 @@ class TestMoneyUtils_Money {
     assertEquals(MoneyUtils.subtract(GBP_20, GBP_30), GBP_M10)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_subtract_differentCurrencies() {
     MoneyUtils.subtract(GBP_20, EUR_30)
   }

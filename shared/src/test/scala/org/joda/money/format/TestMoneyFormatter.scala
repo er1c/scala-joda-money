@@ -106,7 +106,7 @@ class TestMoneyFormatter {
     assertEquals(test.getLocale, TEST_FR_LOCALE)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_withLocale_nullLocale() {
     iPrintTest.withLocale(null.asInstanceOf[Locale])
   }
@@ -115,23 +115,23 @@ class TestMoneyFormatter {
     assertEquals(iPrintTest.print(MONEY_GBP_12_34), "GBP hello")
   }
 
-  @Test(expectedExceptions = classOf[UnsupportedOperationException])
+  @Test(expectedExceptions = Array(classOf[UnsupportedOperationException]))
   def test_print_BigMoneyProvider_cannotPrint() {
     iCannotPrint.print(MONEY_GBP_12_34)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_print_BigMoneyProvider_nullBigMoneyProvider() {
     iPrintTest.print(null.asInstanceOf[BigMoneyProvider])
   }
 
   def test_print_AppendableBigMoneyProvider() {
-    val buf = new StringBuilder()
+    val buf = new java.lang.StringBuilder()
     iPrintTest.print(buf, MONEY_GBP_12_34)
     assertEquals(buf.toString, "GBP hello")
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_print_AppendableBigMoneyProvider_IOException() {
     val appendable = new IOAppendable()
     try {
@@ -144,46 +144,46 @@ class TestMoneyFormatter {
     }
   }
 
-  @Test(expectedExceptions = classOf[UnsupportedOperationException])
+  @Test(expectedExceptions = Array(classOf[UnsupportedOperationException]))
   def test_print_AppendableBigMoneyProvider_cannotPrint() {
-    iCannotPrint.print(new StringBuilder(), MONEY_GBP_12_34)
+    iCannotPrint.print(new java.lang.StringBuilder(), MONEY_GBP_12_34)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_print_AppendableBigMoneyProvider_nullAppendable() {
     iPrintTest.print(null.asInstanceOf[Appendable], MONEY_GBP_12_34)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_print_AppendableBigMoneyProvider_nullBigMoneyProvider() {
-    iPrintTest.print(new StringBuilder(), null.asInstanceOf[BigMoneyProvider])
+    iPrintTest.print(new java.lang.StringBuilder(), null.asInstanceOf[BigMoneyProvider])
   }
 
   def test_printIO_AppendableBigMoneyProvider() {
-    val buf = new StringBuilder()
+    val buf = new java.lang.StringBuilder()
     iPrintTest.printIO(buf, MONEY_GBP_12_34)
     assertEquals(buf.toString, "GBP hello")
   }
 
-  @Test(expectedExceptions = classOf[IOException])
+  @Test(expectedExceptions = Array(classOf[IOException]))
   def test_printIO_AppendableBigMoneyProvider_IOException() {
     val appendable = new IOAppendable()
     iPrintTest.printIO(appendable, MONEY_GBP_12_34)
   }
 
-  @Test(expectedExceptions = classOf[UnsupportedOperationException])
+  @Test(expectedExceptions = Array(classOf[UnsupportedOperationException]))
   def test_printIO_AppendableBigMoneyProvider_cannotPrint() {
-    iCannotPrint.printIO(new StringBuilder(), MONEY_GBP_12_34)
+    iCannotPrint.printIO(new java.lang.StringBuilder(), MONEY_GBP_12_34)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_printIO_AppendableBigMoneyProvider_nullAppendable() {
     iPrintTest.printIO(null.asInstanceOf[Appendable], MONEY_GBP_12_34)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_printIO_AppendableBigMoneyProvider_nullBigMoneyProvider() {
-    iPrintTest.printIO(new StringBuilder(), null.asInstanceOf[BigMoneyProvider])
+    iPrintTest.printIO(new java.lang.StringBuilder(), null.asInstanceOf[BigMoneyProvider])
   }
 
   def test_parseBigMoney_CharSequence() {
@@ -192,43 +192,43 @@ class TestMoneyFormatter {
     assertEquals(test, MONEY_GBP_12_34.toBigMoney())
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parseBigMoney_CharSequence_invalidCurrency() {
     iParseTest.parseBigMoney("12.34 GBX")
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parseBigMoney_CharSequence_notFullyParsed() {
     iParseTest.parseBigMoney("12.34 GBP X")
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parseBigMoney_CharSequence_incomplete() {
     iParseTest.parseBigMoney("12.34 GBP ")
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parseBigMoney_CharSequence_incompleteLongText() {
     iParseTest.parseBigMoney("12.34 GBP ABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB")
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parseBigMoney_CharSequence_incompleteEmptyParser() {
     iCannotPrint.parseBigMoney("12.34 GBP")
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parseBigMoney_CharSequence_missingCurrency() {
     val f = new MoneyFormatterBuilder().appendAmount().toFormatter()
     f.parseBigMoney("12.34")
   }
 
-  @Test(expectedExceptions = classOf[UnsupportedOperationException])
+  @Test(expectedExceptions = Array(classOf[UnsupportedOperationException]))
   def test_parseBigMoney_CharSequence_cannotParse() {
     iCannotParse.parseBigMoney(new StringBuilder())
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_parseBigMoney_CharSequence_nullCharSequence() {
     iParseTest.parseBigMoney(null.asInstanceOf[CharSequence])
   }
@@ -239,27 +239,27 @@ class TestMoneyFormatter {
     assertEquals(test, MONEY_GBP_12_34)
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parseMoney_CharSequence_invalidCurrency() {
     iParseTest.parseMoney("12.34 GBX")
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parseMoney_CharSequence_notFullyParsed() {
     iParseTest.parseMoney("12.34 GBP X")
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parseMoney_CharSequence_incomplete() {
     iCannotPrint.parseMoney("12.34 GBP")
   }
 
-  @Test(expectedExceptions = classOf[UnsupportedOperationException])
+  @Test(expectedExceptions = Array(classOf[UnsupportedOperationException]))
   def test_parseMoney_CharSequence_cannotParse() {
     iCannotParse.parseMoney(new StringBuilder())
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_parseMoney_CharSequence_nullCharSequence() {
     iParseTest.parseMoney(null.asInstanceOf[CharSequence])
   }
@@ -361,22 +361,22 @@ class TestMoneyFormatter {
     assertEquals(test.isComplete, true)
   }
 
-  @Test(expectedExceptions = classOf[UnsupportedOperationException])
+  @Test(expectedExceptions = Array(classOf[UnsupportedOperationException]))
   def test_parse_CharSequenceInt_cannotParse() {
     iCannotParse.parse(new StringBuilder(), 0)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_parse_CharSequenceInt_nullCharSequence() {
     iParseTest.parse(null.asInstanceOf[CharSequence], 0)
   }
 
-  @Test(expectedExceptions = classOf[IndexOutOfBoundsException])
+  @Test(expectedExceptions = Array(classOf[IndexOutOfBoundsException]))
   def test_parse_CharSequenceInt_startIndexTooSmall() {
     iParseTest.parse("", -1)
   }
 
-  @Test(expectedExceptions = classOf[IndexOutOfBoundsException])
+  @Test(expectedExceptions = Array(classOf[IndexOutOfBoundsException]))
   def test_parse_CharSequenceInt_startIndexTooBig() {
     iParseTest.parse("", 1)
   }
@@ -390,27 +390,27 @@ class TestMoneyFormatter {
     assertEquals(f.parseMoney("GBP BC.DE"), MONEY_GBP_12_34)
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parseMoney_notFullyParsed() {
     iParseTest.parseMoney("GBP hello notfullyparsed")
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parseMoney_noAmount() {
     iParseTest.parseMoney("GBP hello")
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parseBigMoney_notFullyParsed() {
     iParseTest.parseBigMoney("GBP hello notfullyparsed")
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parseBigMoney_noAmount() {
     iParseTest.parseBigMoney("GBP hello")
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_parse_notFullyParsed() {
     val context = iParseTest.parse("GBP hello notfullyparsed", 1)
     context.toBigMoney()

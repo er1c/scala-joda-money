@@ -1,7 +1,7 @@
 package org.joda.money
 
 import org.testng.Assert.assertEquals
-import org.joda.convert.StringConvert
+//import org.joda.convert.StringConvert
 import org.testng.annotations.Test
 //remove if not needed
 import scala.collection.JavaConversions._
@@ -11,7 +11,7 @@ import scala.collection.JavaConversions._
  */
 @Test
 class TestStringConvert {
-
+/*
   def test_BigMoney() {
     val test = BigMoney.of(CurrencyUnit.CHF, 1234.5678d)
     val str = StringConvert.INSTANCE.convertToString(test)
@@ -32,4 +32,5 @@ class TestStringConvert {
     assertEquals("CHF", str)
     assertEquals(test, StringConvert.INSTANCE.convertFromString(classOf[CurrencyUnit], str))
   }
+*/
 }

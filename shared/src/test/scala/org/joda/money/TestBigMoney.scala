@@ -20,8 +20,7 @@ import java.util.Collections
 import org.testng.annotations.DataProvider
 import org.testng.annotations.Test
 import TestBigMoney._
-//remove if not needed
-import scala.collection.JavaConversions._
+import collection.JavaConverters._
 
 object TestBigMoney {
 
@@ -104,25 +103,17 @@ class TestBigMoney {
     assertEquals(test.getScale, 3)
   }
 
-  @Test
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_of_Currency_BigDecimal_nullCurrency() {
-    try {
-      BigMoney.of(null.asInstanceOf[CurrencyUnit], BIGDEC_2_345)
-    } catch {
-      case ex: NullPointerException => // Expected
-    }
+    BigMoney.of(null.asInstanceOf[CurrencyUnit], BIGDEC_2_345)
   }
 
-  @Test
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_of_Currency_BigDecimal_nullBigDecimal() {
-    try {
-      BigMoney.of(GBP, null.asInstanceOf[BigDecimal])
-    } catch {
-      case ex: NullPointerException => // Expected
-    }
+    BigMoney.of(GBP, null.asInstanceOf[BigDecimal])
   }
 
-  @Test
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_factory_of_Currency_subClass1() {
     @SerialVersionUID(1L)
     class BadDecimal() extends BigDecimal(432) {
@@ -132,17 +123,12 @@ class TestBigMoney {
       override def scale(): Int = return 1
     }
     val sub = new BadDecimal()
-
-    try {
-      BigMoney.of(GBP, sub)
-    } catch {
-      case ex: IllegalArgumentException => // Expected
-    }
+    BigMoney.of(GBP, sub)
   }
 
   def test_factory_of_Currency_subClass2() {
     @SerialVersionUID(1L)
-    class BadInteger extends BigInteger
+    class BadInteger extends BigInteger(Array.empty[Byte])
     @SerialVersionUID(1L)
     class BadDecimal() extends BigDecimal(432) {
 
@@ -193,13 +179,9 @@ class TestBigMoney {
     assertEquals(test.getScale, 0)
   }
 
-  @Test
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_of_Currency_double_nullCurrency() {
-    try {
-      BigMoney.of(null.asInstanceOf[CurrencyUnit], 2.345d)
-    } catch {
-      case ex: NullPointerException => // Expected
-    }
+    BigMoney.of(null.asInstanceOf[CurrencyUnit], 2.345d)
   }
 
   def test_factory_ofScale_Currency_BigDecimal_int() {
@@ -214,31 +196,19 @@ class TestBigMoney {
     assertEquals(test.getAmount, BigDecimal.valueOf(23400L, 0))
   }
 
-  @Test
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_factory_ofScale_Currency_BigDecimal_invalidScale() {
-    try {
-      BigMoney.ofScale(GBP, BIGDEC_2_345, 2)
-    } catch {
-      case ex: ArithmeticException => // Expected
-    }
+    BigMoney.ofScale(GBP, BIGDEC_2_345, 2)
   }
 
-  @Test
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_ofScale_Currency_BigDecimal_nullCurrency() {
-    try {
-      BigMoney.ofScale(null.asInstanceOf[CurrencyUnit], BIGDEC_2_34, 2)
-    } catch {
-      case ex: NullPointerException => // Expected
-    }
+    BigMoney.ofScale(null.asInstanceOf[CurrencyUnit], BIGDEC_2_34, 2)
   }
 
-  @Test
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_ofScale_Currency_BigDecimal_nullBigDecimal() {
-    try {
-      BigMoney.ofScale(GBP, null.asInstanceOf[BigDecimal], 2)
-    } catch {
-      case ex: NullPointerException => // Expected
-    }
+    BigMoney.ofScale(GBP, null.asInstanceOf[BigDecimal], 2)
   }
 
   def test_factory_ofScale_Currency_BigDecimal_int_RoundingMode_DOWN() {
@@ -259,22 +229,22 @@ class TestBigMoney {
     assertEquals(test.getAmount, BigDecimal.valueOf(23400L, 0))
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_factory_ofScale_Currency_BigDecimal_int_RoundingMode_UNNECESSARY() {
     BigMoney.ofScale(JPY, BIGDEC_2_34, 1, RoundingMode.UNNECESSARY)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_ofScale_Currency_BigDecimal_int_RoundingMode_nullCurrency() {
     BigMoney.ofScale(null.asInstanceOf[CurrencyUnit], BIGDEC_2_34, 2, RoundingMode.DOWN)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_ofScale_Currency_BigDecimal_int_RoundingMode_nullBigDecimal() {
     BigMoney.ofScale(GBP, null.asInstanceOf[BigDecimal], 2, RoundingMode.DOWN)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_ofScale_Currency_BigDecimal_int_RoundingMode_nullRoundingMode() {
     BigMoney.ofScale(GBP, BIGDEC_2_34, 2, null.asInstanceOf[RoundingMode])
   }
@@ -291,7 +261,7 @@ class TestBigMoney {
     assertEquals(test.getAmount, BigDecimal.valueOf(2340000, 0))
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_ofScale_Currency_long_int_nullCurrency() {
     BigMoney.ofScale(null.asInstanceOf[CurrencyUnit], 234, 2)
   }
@@ -303,7 +273,7 @@ class TestBigMoney {
     assertEquals(test.getScale, 0)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_ofMajor_Currency_long_nullCurrency() {
     BigMoney.ofMajor(null.asInstanceOf[CurrencyUnit], 234)
   }
@@ -315,7 +285,7 @@ class TestBigMoney {
     assertEquals(test.getScale, 2)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_ofMinor_Currency_long_nullCurrency() {
     BigMoney.ofMinor(null.asInstanceOf[CurrencyUnit], 234)
   }
@@ -327,7 +297,7 @@ class TestBigMoney {
     assertEquals(test.getScale, 0)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_zero_Currency_nullCurrency() {
     BigMoney.zero(null.asInstanceOf[CurrencyUnit])
   }
@@ -344,7 +314,7 @@ class TestBigMoney {
     assertEquals(test.getAmount, BigDecimal.valueOf(0, 0))
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_zero_Currency_int_nullCurrency() {
     BigMoney.zero(null.asInstanceOf[CurrencyUnit], 3)
   }
@@ -356,12 +326,12 @@ class TestBigMoney {
     assertEquals(test.getScale, 2)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_from_BigMoneyProvider_nullBigMoneyProvider() {
     BigMoney.of(null.asInstanceOf[BigMoneyProvider])
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_from_BigMoneyProvider_badProvider() {
     BigMoney.of(BAD_PROVIDER)
   }
@@ -373,8 +343,8 @@ class TestBigMoney {
   }
 
   def test_factory_total_array_1BigMoney() {
-    val array = Array(GBP_1_23)
-    val test = BigMoney.total(array)
+    val array = Seq(GBP_1_23)
+    val test = BigMoney.total(array.asJava)
     assertEquals(test.getCurrencyUnit, GBP)
     assertEquals(test.getAmountMinorInt, 123)
   }
@@ -386,72 +356,72 @@ class TestBigMoney {
   }
 
   def test_factory_total_array_3Mixed() {
-    val array = Array(GBP_1_23, GBP_2_33.toMoney(), GBP_2_36)
-    val test = BigMoney.total(array)
+    val array = Seq(GBP_1_23, GBP_2_33.toMoney(), GBP_2_36)
+    val test = BigMoney.total(array.asJava)
     assertEquals(test.getCurrencyUnit, GBP)
     assertEquals(test.getAmountMinorInt, 592)
   }
 
   def test_factory_total_array_3Money() {
-    val array = Array(GBP_1_23.toMoney(), GBP_2_33.toMoney(), GBP_2_36.toMoney())
-    val test = BigMoney.total(array)
+    val array = Seq(GBP_1_23.toMoney(), GBP_2_33.toMoney(), GBP_2_36.toMoney())
+    val test = BigMoney.total(array.asJava)
     assertEquals(test.getCurrencyUnit, GBP)
     assertEquals(test.getAmountMinorInt, 592)
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_factory_total_varargs_empty() {
     BigMoney.total()
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_factory_total_array_empty() {
     val array = Array.ofDim[BigMoneyProvider](0)
-    BigMoney.total(array)
+    BigMoney.total(array.toSeq.asJava)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_factory_total_varargs_currenciesDiffer() {
     BigMoney.total(GBP_2_33, JPY_423)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_factory_total_array_currenciesDiffer() {
-    val array = Array(GBP_2_33, JPY_423)
-    BigMoney.total(array)
+    val array = Seq(GBP_2_33, JPY_423)
+    BigMoney.total(array.asJava)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_varargs_nullFirst() {
     BigMoney.total(null.asInstanceOf[BigMoney], GBP_2_33, GBP_2_36)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_array_nullFirst() {
-    val array = Array(null, GBP_2_33, GBP_2_36)
-    BigMoney.total(array)
+    val array = Seq(null, GBP_2_33, GBP_2_36)
+    BigMoney.total(array.asJava)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_varargs_nullNotFirst() {
     BigMoney.total(GBP_2_33, null, GBP_2_36)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_array_nullNotFirst() {
-    val array = Array(GBP_2_33, null, GBP_2_36)
-    BigMoney.total(array)
+    val array = Seq(GBP_2_33, null, GBP_2_36)
+    BigMoney.total(array.asJava)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_varargs_badProvider() {
     BigMoney.total(BAD_PROVIDER)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_array_badProvider() {
-    val array = Array(BAD_PROVIDER)
-    BigMoney.total(array)
+    val array = Seq(BAD_PROVIDER)
+    BigMoney.total(array.asJava)
   }
 
   def test_factory_total_Iterable() {
@@ -468,33 +438,33 @@ class TestBigMoney {
     assertEquals(test.getAmount, BigDecimal.valueOf(356, 2))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_factory_total_Iterable_empty() {
     val iterable = Collections.emptyList()
     BigMoney.total(iterable)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_factory_total_Iterable_currenciesDiffer() {
     val iterable = Arrays.asList(GBP_2_33, JPY_423)
     BigMoney.total(iterable)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_Iterable_nullFirst() {
     val iterable = Arrays.asList(null, GBP_2_33, GBP_2_36)
     BigMoney.total(iterable)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_Iterable_nullNotFirst() {
     val iterable = Arrays.asList(GBP_2_33, null, GBP_2_36)
     BigMoney.total(iterable)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_Iterable_badProvider() {
-    val iterable = Arrays.asList[BigMoneyProvider](BAD_PROVIDER:_*)
+    val iterable = Arrays.asList[BigMoneyProvider](BAD_PROVIDER)
     BigMoney.total(iterable)
   }
 
@@ -505,8 +475,8 @@ class TestBigMoney {
   }
 
   def test_factory_total_CurrencyUnitArray_1() {
-    val array = Array(GBP_1_23)
-    val test = BigMoney.total(GBP, array)
+    val array = Seq(GBP_1_23)
+    val test = BigMoney.total(GBP, array.asJava)
     assertEquals(test.getCurrencyUnit, GBP)
     assertEquals(test.getAmountMinorInt, 123)
   }
@@ -518,8 +488,8 @@ class TestBigMoney {
   }
 
   def test_factory_total_CurrencyUnitArray_3() {
-    val array = Array(GBP_1_23, GBP_2_33, GBP_2_36)
-    val test = BigMoney.total(GBP, array)
+    val array = Seq(GBP_1_23, GBP_2_33, GBP_2_36)
+    val test = BigMoney.total(GBP, array.asJava)
     assertEquals(test.getCurrencyUnit, GBP)
     assertEquals(test.getAmountMinorInt, 592)
   }
@@ -531,15 +501,15 @@ class TestBigMoney {
   }
 
   def test_factory_total_CurrencyUnitArray_3Mixed() {
-    val array = Array(GBP_1_23, GBP_2_33.toMoney(), GBP_2_36)
-    val test = BigMoney.total(GBP, array)
+    val array = Seq(GBP_1_23, GBP_2_33.toMoney(), GBP_2_36)
+    val test = BigMoney.total(GBP, array.asJava)
     assertEquals(test.getCurrencyUnit, GBP)
     assertEquals(test.getAmountMinorInt, 592)
   }
 
   def test_factory_total_CurrencyUnitArray_3Money() {
-    val array = Array(GBP_1_23.toMoney(), GBP_2_33.toMoney(), GBP_2_36.toMoney())
-    val test = BigMoney.total(GBP, array)
+    val array = Seq(GBP_1_23.toMoney(), GBP_2_33.toMoney(), GBP_2_36.toMoney())
+    val test = BigMoney.total(GBP, array.asJava)
     assertEquals(test.getCurrencyUnit, GBP)
     assertEquals(test.getAmountMinorInt, 592)
   }
@@ -551,65 +521,65 @@ class TestBigMoney {
   }
 
   def test_factory_total_CurrencyUnitArray_empty() {
-    val array = Array.ofDim[BigMoney](0)
-    val test = BigMoney.total(GBP, array)
+    val array = Array.ofDim[BigMoney](0).toSeq
+    val test = BigMoney.total(GBP, array.asJava)
     assertEquals(test.getCurrencyUnit, GBP)
     assertEquals(test.getAmountMinorInt, 0)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_factory_total_CurrencyUnitVarargs_currenciesDiffer() {
     BigMoney.total(GBP, JPY_423)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_factory_total_CurrencyUnitArray_currenciesDiffer() {
-    val array = Array(JPY_423)
-    BigMoney.total(GBP, array)
+    val array = Seq(JPY_423)
+    BigMoney.total(GBP, array.asJava)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_factory_total_CurrencyUnitVarargs_currenciesDifferInArray() {
     BigMoney.total(GBP, GBP_2_33, JPY_423)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_factory_total_CurrencyUnitArray_currenciesDifferInArray() {
-    val array = Array(GBP_2_33, JPY_423)
-    BigMoney.total(GBP, array)
+    val array = Seq(GBP_2_33, JPY_423)
+    BigMoney.total(GBP, array.asJava)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_CurrencyUnitVarargs_nullFirst() {
     BigMoney.total(GBP, null, GBP_2_33, GBP_2_36)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_CurrencyUnitArray_nullFirst() {
-    val array = Array(null, GBP_2_33, GBP_2_36)
-    BigMoney.total(GBP, array)
+    val array = Seq(null, GBP_2_33, GBP_2_36)
+    BigMoney.total(GBP, array.asJava)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_CurrencyUnitVarargs_nullNotFirst() {
     BigMoney.total(GBP, GBP_2_33, null, GBP_2_36)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_CurrencyUnitArray_nullNotFirst() {
-    val array = Array(GBP_2_33, null, GBP_2_36)
-    BigMoney.total(GBP, array)
+    val array = Seq(GBP_2_33, null, GBP_2_36)
+    BigMoney.total(GBP, array.asJava)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_CurrencyUnitVarargs_badProvider() {
     BigMoney.total(GBP, BAD_PROVIDER)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_CurrencyUnitArray_badProvider() {
-    val array = Array(BAD_PROVIDER)
-    BigMoney.total(GBP, array)
+    val array = Seq(BAD_PROVIDER)
+    BigMoney.total(GBP, array.asJava)
   }
 
   def test_factory_total_CurrencyUnitIterable() {
@@ -633,33 +603,33 @@ class TestBigMoney {
     assertEquals(test.getAmountMinorInt, 0)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_factory_total_CurrencyUnitIterable_currenciesDiffer() {
-    val iterable = Arrays.asList(JPY_423:_*)
+    val iterable = Arrays.asList(JPY_423)
     BigMoney.total(GBP, iterable)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_factory_total_CurrencyUnitIterable_currenciesDifferInIterable() {
     val iterable = Arrays.asList(GBP_2_33, JPY_423)
     BigMoney.total(GBP, iterable)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_CurrencyUnitIterable_nullFirst() {
     val iterable = Arrays.asList(null, GBP_2_33, GBP_2_36)
     BigMoney.total(GBP, iterable)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_CurrencyUnitIterable_nullNotFirst() {
     val iterable = Arrays.asList(GBP_2_33, null, GBP_2_36)
     BigMoney.total(GBP, iterable)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_total_CurrencyUnitIterable_badProvider() {
-    val iterable = Arrays.asList[BigMoneyProvider](BAD_PROVIDER:_*)
+    val iterable = Arrays.asList[BigMoneyProvider](BAD_PROVIDER)
     BigMoney.total(GBP, iterable)
   }
 
@@ -669,32 +639,32 @@ class TestBigMoney {
   }
 
   @Test(dataProvider = "parse")
-  def test_factory_parse(str: String, 
-      currency: CurrencyUnit, 
-      amountStr: String, 
-      scale: Int) {
+  def test_factory_parse(str: String,
+                         currency: CurrencyUnit,
+                         amountStr: String,
+                         scale: Int) {
     val test = BigMoney.parse(str)
     assertEquals(test.getCurrencyUnit, currency)
     assertEquals(test.getAmount, bd(amountStr))
     assertEquals(test.getScale, scale)
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_factory_parse_String_tooShort() {
     BigMoney.parse("GBP")
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_factory_parse_String_exponent() {
     BigMoney.parse("GBP 234E2")
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_factory_parse_String_badCurrency() {
     BigMoney.parse("GBX 2.34")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_factory_parse_String_nullString() {
     BigMoney.parse(null.asInstanceOf[String])
   }
@@ -704,12 +674,12 @@ class TestBigMoney {
     assertSame(test, GBP_1_23)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_nonNull_BigMoneyCurrencyUnit_nonNullCurrencyMismatch() {
     BigMoney.nonNull(GBP_1_23, JPY)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_nonNull_BigMoneyCurrencyUnit_nonNull_nullCurrency() {
     BigMoney.nonNull(GBP_1_23, null)
   }
@@ -719,7 +689,7 @@ class TestBigMoney {
     assertEquals(test, BigMoney.ofMajor(GBP, 0))
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_nonNull_BigMoneyCurrencyUnit_null_nullCurrency() {
     BigMoney.nonNull(null, null)
   }
@@ -795,7 +765,7 @@ class TestBigMoney {
     assertEquals(input, a)
   }
 
-  @Test(expectedExceptions = classOf[InvalidObjectException])
+  @Test(expectedExceptions = Array(classOf[InvalidObjectException]))
   def test_serialization_invalidNumericCode() {
     val cu = new CurrencyUnit("GBP", 234.toShort, 2.toShort)
     val m = BigMoney.of(cu, 123.43d)
@@ -807,7 +777,7 @@ class TestBigMoney {
     ois.readObject()
   }
 
-  @Test(expectedExceptions = classOf[InvalidObjectException])
+  @Test(expectedExceptions = Array(classOf[InvalidObjectException]))
   def test_serialization_invalidDecimalPlaces() {
     val cu = new CurrencyUnit("GBP", 826.toShort, 1.toShort)
     val m = BigMoney.of(cu, 123.43d)
@@ -842,7 +812,7 @@ class TestBigMoney {
     assertEquals(test.toString, "JPY 2.34")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_withCurrencyUnit_Currency_nullCurrency() {
     GBP_2_34.withCurrencyUnit(null.asInstanceOf[CurrencyUnit])
   }
@@ -880,7 +850,7 @@ class TestBigMoney {
     assertEquals(test.getScale, 3)
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_withScale_int_less() {
     BigMoney.parse("GBP 2.345").withScale(2)
   }
@@ -908,7 +878,7 @@ class TestBigMoney {
     assertEquals(test.getScale, 2)
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_withCurrencyScale_int_less() {
     BigMoney.parse("GBP 2.345").withCurrencyScale()
   }
@@ -955,12 +925,12 @@ class TestBigMoney {
     assertEquals(GBP_M5_78.getAmountMajorLong, -5L)
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_getAmountMajorLong_tooBigPositive() {
     GBP_LONG_MAX_MAJOR_PLUS1.getAmountMajorLong
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_getAmountMajorLong_tooBigNegative() {
     GBP_LONG_MIN_MAJOR_MINUS1.getAmountMajorLong
   }
@@ -973,12 +943,12 @@ class TestBigMoney {
     assertEquals(GBP_M5_78.getAmountMajorInt, -5)
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_getAmountMajorInt_tooBigPositive() {
     GBP_INT_MAX_MAJOR_PLUS1.getAmountMajorInt
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_getAmountMajorInt_tooBigNegative() {
     GBP_INT_MIN_MAJOR_MINUS1.getAmountMajorInt
   }
@@ -999,12 +969,12 @@ class TestBigMoney {
     assertEquals(GBP_M5_78.getAmountMinorLong, -578L)
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_getAmountMinorLong_tooBigPositive() {
     GBP_LONG_MAX_PLUS1.getAmountMinorLong
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_getAmountMinorLong_tooBigNegative() {
     GBP_LONG_MIN_MINUS1.getAmountMinorLong
   }
@@ -1017,12 +987,12 @@ class TestBigMoney {
     assertEquals(GBP_M5_78.getAmountMinorInt, -578)
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_getAmountMinorInt_tooBigPositive() {
     GBP_INT_MAX_PLUS1.getAmountMinorInt
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_getAmountMinorInt_tooBigNegative() {
     GBP_INT_MIN_MINUS1.getAmountMinorInt
   }
@@ -1076,7 +1046,7 @@ class TestBigMoney {
     assertSame(test, GBP_2_34)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_withAmount_BigDecimal_nullBigDecimal() {
     GBP_2_34.withAmount(null.asInstanceOf[BigDecimal])
   }
@@ -1120,34 +1090,33 @@ class TestBigMoney {
   }
 
   def test_plus_Iterable_zero() {
-    val iterable = Arrays.asList[BigMoneyProvider](GBP_0_00:_*)
+    val iterable = Arrays.asList[BigMoneyProvider](GBP_0_00)
     val test = GBP_2_34.plus(iterable)
     assertEquals(test, GBP_2_34)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_plus_Iterable_currencyMismatch() {
     val iterable = Arrays.asList[BigMoneyProvider](GBP_2_33, JPY_423)
     GBP_M5_78.plus(iterable)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_plus_Iterable_nullEntry() {
     val iterable = Arrays.asList[BigMoneyProvider](GBP_2_33, null)
     GBP_M5_78.plus(iterable)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_plus_Iterable_nullIterable() {
     GBP_M5_78.plus(null.asInstanceOf[java.lang.Iterable[BigMoneyProvider]])
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_plus_Iterable_badProvider() {
-    val iterable = Arrays.asList[BigMoneyProvider](new BigMoneyProvider() {
-
+    val iterable = Arrays.asList[BigMoneyProvider](new BigMoneyProvider {
       override def toBigMoney(): BigMoney = return null
-    }:_*)
+    })
     GBP_M5_78.plus(iterable)
   }
 
@@ -1180,17 +1149,17 @@ class TestBigMoney {
     assertEquals(test.getScale, 2)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_plus_BigMoneyProvider_currencyMismatch() {
     GBP_M5_78.plus(USD_1_23)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_plus_BigMoneyProvider_nullBigMoneyProvider() {
     GBP_M5_78.plus(null.asInstanceOf[BigMoneyProvider])
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_plus_BigMoneyProvider_badProvider() {
     GBP_M5_78.plus(new BigMoneyProvider() {
 
@@ -1221,7 +1190,7 @@ class TestBigMoney {
     assertEquals(test.getScale, 3)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_plus_BigDecimal_nullBigDecimal() {
     GBP_M5_78.plus(null.asInstanceOf[BigDecimal])
   }
@@ -1309,17 +1278,17 @@ class TestBigMoney {
     assertEquals(test.toString, "GBP 3.57")
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_plusRetainScale_BigMoneyProviderRoundingMode_roundUnecessary() {
     GBP_2_34.plusRetainScale(BigMoney.parse("GBP 1.235"), RoundingMode.UNNECESSARY)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_plusRetainScale_BigMoneyProviderRoundingMode_nullBigDecimal() {
     GBP_M5_78.plusRetainScale(null.asInstanceOf[BigDecimal], RoundingMode.UNNECESSARY)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_plusRetainScale_BigMoneyProviderRoundingMode_nullRoundingMode() {
     GBP_M5_78.plusRetainScale(BigMoney.parse("GBP 1.23"), null.asInstanceOf[RoundingMode])
   }
@@ -1344,17 +1313,17 @@ class TestBigMoney {
     assertEquals(test.toString, "GBP 3.57")
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_plusRetainScale_BigDecimalRoundingMode_roundUnecessary() {
     GBP_2_34.plusRetainScale(bd("1.235"), RoundingMode.UNNECESSARY)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_plusRetainScale_BigDecimalRoundingMode_nullBigDecimal() {
     GBP_M5_78.plusRetainScale(null.asInstanceOf[BigDecimal], RoundingMode.UNNECESSARY)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_plusRetainScale_BigDecimalRoundingMode_nullRoundingMode() {
     GBP_M5_78.plusRetainScale(BIGDEC_2_34, null.asInstanceOf[RoundingMode])
   }
@@ -1379,12 +1348,12 @@ class TestBigMoney {
     assertEquals(test.toString, "GBP 3.57")
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_plusRetainScale_doubleRoundingMode_roundUnecessary() {
     GBP_2_34.plusRetainScale(1.235d, RoundingMode.UNNECESSARY)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_plusRetainScale_doubleRoundingMode_nullRoundingMode() {
     GBP_M5_78.plusRetainScale(2.34d, null.asInstanceOf[RoundingMode])
   }
@@ -1417,34 +1386,33 @@ class TestBigMoney {
   }
 
   def test_minus_Iterable_zero() {
-    val iterable = Arrays.asList[BigMoneyProvider](GBP_0_00:_*)
+    val iterable = Arrays.asList[BigMoneyProvider](GBP_0_00)
     val test = GBP_2_34.minus(iterable)
     assertEquals(test, GBP_2_34)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_minus_Iterable_currencyMismatch() {
     val iterable = Arrays.asList[BigMoneyProvider](GBP_2_33, JPY_423)
     GBP_M5_78.minus(iterable)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_minus_Iterable_nullEntry() {
     val iterable = Arrays.asList[BigMoneyProvider](GBP_2_33, null)
     GBP_M5_78.minus(iterable)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_minus_Iterable_nullIterable() {
     GBP_M5_78.minus(null.asInstanceOf[java.lang.Iterable[BigMoneyProvider]])
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_minus_Iterable_badProvider() {
-    val iterable = Arrays.asList[BigMoneyProvider](new BigMoneyProvider() {
-
+    val iterable = Arrays.asList[BigMoneyProvider](new BigMoneyProvider {
       override def toBigMoney(): BigMoney = return null
-    }:_*)
+    })
     GBP_M5_78.minus(iterable)
   }
 
@@ -1477,17 +1445,17 @@ class TestBigMoney {
     assertEquals(test.getScale, 2)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_minus_BigMoneyProvider_currencyMismatch() {
     GBP_M5_78.minus(USD_1_23)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_minus_BigMoneyProvider_nullBigMoneyProvider() {
     GBP_M5_78.minus(null.asInstanceOf[BigMoneyProvider])
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_minus_BigMoneyProvider_badProvider() {
     GBP_M5_78.minus(new BigMoneyProvider() {
 
@@ -1518,7 +1486,7 @@ class TestBigMoney {
     assertEquals(test.getScale, 3)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_minus_BigDecimal_nullBigDecimal() {
     GBP_M5_78.minus(null.asInstanceOf[BigDecimal])
   }
@@ -1606,17 +1574,17 @@ class TestBigMoney {
     assertEquals(test.toString, "GBP 1.10")
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_minusRetainScale_BigMoneyProviderRoundingMode_roundUnecessary() {
     GBP_2_34.minusRetainScale(BigMoney.parse("GBP 1.235"), RoundingMode.UNNECESSARY)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_minusRetainScale_BigMoneyProviderRoundingMode_nullBigMoneyProvider() {
     GBP_M5_78.minusRetainScale(null.asInstanceOf[BigMoneyProvider], RoundingMode.UNNECESSARY)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_minusRetainScale_BigMoneyProviderRoundingMode_nullRoundingMode() {
     GBP_M5_78.minusRetainScale(BigMoney.parse("GBP 123"), null.asInstanceOf[RoundingMode])
   }
@@ -1641,17 +1609,17 @@ class TestBigMoney {
     assertEquals(test.toString, "GBP 1.10")
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_minusRetainScale_BigDecimalRoundingMode_roundUnecessary() {
     GBP_2_34.minusRetainScale(bd("1.235"), RoundingMode.UNNECESSARY)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_minusRetainScale_BigDecimalRoundingMode_nullBigDecimal() {
     GBP_M5_78.minusRetainScale(null.asInstanceOf[BigDecimal], RoundingMode.UNNECESSARY)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_minusRetainScale_BigDecimalRoundingMode_nullRoundingMode() {
     GBP_M5_78.minusRetainScale(BIGDEC_2_34, null.asInstanceOf[RoundingMode])
   }
@@ -1676,12 +1644,12 @@ class TestBigMoney {
     assertEquals(test.toString, "GBP 1.10")
   }
 
-  @Test(expectedExceptions = classOf[ArithmeticException])
+  @Test(expectedExceptions = Array(classOf[ArithmeticException]))
   def test_minusRetainScale_doubleRoundingMode_roundUnecessary() {
     GBP_2_34.minusRetainScale(1.235d, RoundingMode.UNNECESSARY)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_minusRetainScale_doubleRoundingMode_nullRoundingMode() {
     GBP_M5_78.minusRetainScale(2.34d, null.asInstanceOf[RoundingMode])
   }
@@ -1703,7 +1671,7 @@ class TestBigMoney {
     assertEquals(test.getScale, 3)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_multipliedBy_BigDecimal_nullBigDecimal() {
     GBP_5_78.multipliedBy(null.asInstanceOf[BigDecimal])
   }
@@ -1762,12 +1730,12 @@ class TestBigMoney {
     assertEquals(test.toString, "GBP -5.83")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_multiplyRetainScale_BigDecimalRoundingMode_nullBigDecimal() {
     GBP_5_78.multiplyRetainScale(null.asInstanceOf[BigDecimal], RoundingMode.DOWN)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_multiplyRetainScale_BigDecimalRoundingMode_nullRoundingMode() {
     GBP_5_78.multiplyRetainScale(bd("2.5"), null.asInstanceOf[RoundingMode])
   }
@@ -1792,7 +1760,7 @@ class TestBigMoney {
     assertEquals(test.toString, "GBP -5.83")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_multiplyRetainScale_doubleRoundingMode_nullRoundingMode() {
     GBP_5_78.multiplyRetainScale(2.5d, null.asInstanceOf[RoundingMode])
   }
@@ -1817,12 +1785,12 @@ class TestBigMoney {
     assertEquals(test.toString, "GBP -0.94")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_dividedBy_BigDecimalRoundingMode_nullBigDecimal() {
     GBP_5_78.dividedBy(null.asInstanceOf[BigDecimal], RoundingMode.DOWN)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_dividedBy_BigDecimalRoundingMode_nullRoundingMode() {
     GBP_5_78.dividedBy(bd("2.5"), null.asInstanceOf[RoundingMode])
   }
@@ -1847,7 +1815,7 @@ class TestBigMoney {
     assertEquals(test.toString, "GBP -0.94")
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_dividedBy_doubleRoundingMode_nullRoundingMode() {
     GBP_5_78.dividedBy(2.5d, null.asInstanceOf[RoundingMode])
   }
@@ -1957,22 +1925,22 @@ class TestBigMoney {
     assertEquals(test, GBP_2_33)
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_convertedTo_CurrencyUnit_BigDecimal_negative() {
     GBP_2_33.convertedTo(EUR, bd("-2.5"))
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_convertedTo_CurrencyUnit_BigDecimal_sameCurrencyWrongFactor() {
     GBP_2_33.convertedTo(GBP, bd("2.5"))
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_convertedTo_CurrencyUnit_BigDecimal_nullCurrency() {
     GBP_5_78.convertedTo(null.asInstanceOf[CurrencyUnit], bd("2"))
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_convertedTo_CurrencyUnit_BigDecimal_nullBigDecimal() {
     GBP_5_78.convertedTo(EUR, null.asInstanceOf[BigDecimal])
   }
@@ -1987,27 +1955,27 @@ class TestBigMoney {
     assertEquals(test.toString, "EUR 5.53")
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_convertRetainScale_CurrencyUnit_BigDecimal_RoundingMode_negative() {
     GBP_2_33.convertRetainScale(EUR, bd("-2.5"), RoundingMode.DOWN)
   }
 
-  @Test(expectedExceptions = classOf[IllegalArgumentException])
+  @Test(expectedExceptions = Array(classOf[IllegalArgumentException]))
   def test_convertRetainScale_CurrencyUnit_BigDecimal_RoundingMode_sameCurrency() {
     GBP_2_33.convertRetainScale(GBP, bd("2.5"), RoundingMode.DOWN)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_convertRetainScale_CurrencyUnit_BigDecimal_RoundingMode_nullCurrency() {
     GBP_5_78.convertRetainScale(null.asInstanceOf[CurrencyUnit], bd("2"), RoundingMode.DOWN)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_convertRetainScale_CurrencyUnit_BigDecimal_RoundingMode_nullBigDecimal() {
     GBP_5_78.convertRetainScale(EUR, null.asInstanceOf[BigDecimal], RoundingMode.DOWN)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_convertRetainScale_CurrencyUnit_BigDecimal_RoundingMode_nullRoundingMode() {
     GBP_5_78.convertRetainScale(EUR, bd("2"), null.asInstanceOf[RoundingMode])
   }
@@ -2045,7 +2013,7 @@ class TestBigMoney {
     assertEquals(GBP_2_34.isSameCurrency(Money.parse("USD 2")), false)
   }
 
-  @Test(expectedExceptions = classOf[NullPointerException])
+  @Test(expectedExceptions = Array(classOf[NullPointerException]))
   def test_isSameCurrency_Money_nullMoney() {
     GBP_2_34.isSameCurrency(null.asInstanceOf[BigMoney])
   }
@@ -2075,17 +2043,17 @@ class TestBigMoney {
     assertEquals(t.compareTo(c), -1)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_compareTo_currenciesDiffer() {
     val a = GBP_2_34
     val b = USD_2_35
     a.compareTo(b)
   }
 
-  @Test(expectedExceptions = classOf[ClassCastException])
+  @Test(expectedExceptions = Array(classOf[ClassCastException]))
   def test_compareTo_wrongType() {
     val a = GBP_2_34
-    a.compareTo("NotRightType")
+    a.compareTo("NotRightType".asInstanceOf[BigMoney])
   }
 
   def test_isEqual() {
@@ -2109,7 +2077,7 @@ class TestBigMoney {
     assertEquals(a.isEqual(b), true)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_isEqual_currenciesDiffer() {
     val a = GBP_2_34
     val b = USD_2_35
@@ -2131,7 +2099,7 @@ class TestBigMoney {
     assertEquals(c.isGreaterThan(b), true)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_isGreaterThan_currenciesDiffer() {
     val a = GBP_2_34
     val b = USD_2_35
@@ -2153,7 +2121,7 @@ class TestBigMoney {
     assertEquals(c.isLessThan(b), false)
   }
 
-  @Test(expectedExceptions = classOf[CurrencyMismatchException])
+  @Test(expectedExceptions = Array(classOf[CurrencyMismatchException]))
   def test_isLessThan_currenciesDiffer() {
     val a = GBP_2_34
     val b = USD_2_35

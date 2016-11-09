@@ -76,14 +76,14 @@ class TestMoneyParseContext {
     assertEquals(test.isComplete, false)
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_toBigMoney_noCurrency() {
     val test = new MoneyParseContext(Locale.FRANCE, "GBP 123", 0)
     test.setAmount(BigDecimal.TEN)
     test.toBigMoney()
   }
 
-  @Test(expectedExceptions = classOf[MoneyFormatException])
+  @Test(expectedExceptions = Array(classOf[MoneyFormatException]))
   def test_toBigMoney_noAmount() {
     val test = new MoneyParseContext(Locale.FRANCE, "GBP 123", 0)
     test.setCurrency(CurrencyUnit.GBP)
@@ -96,13 +96,13 @@ class TestMoneyParseContext {
     assertEquals(test.getTextSubstring(5, 7), "23")
   }
 
-  @Test(expectedExceptions = classOf[IndexOutOfBoundsException])
+  @Test(expectedExceptions = Array(classOf[IndexOutOfBoundsException]))
   def test_getTextSubstring_beforeStart() {
     val test = new MoneyParseContext(Locale.FRANCE, "GBP 123", 0)
     test.getTextSubstring(-1, 2)
   }
 
-  @Test(expectedExceptions = classOf[IndexOutOfBoundsException])
+  @Test(expectedExceptions = Array(classOf[IndexOutOfBoundsException]))
   def test_getTextSubstring_afterEnd() {
     val test = new MoneyParseContext(Locale.FRANCE, "GBP 123", 0)
     test.getTextSubstring(0, 8)
