@@ -122,7 +122,11 @@ class MoneyFormatter(@BeanProperty val locale: Locale, @BeanProperty val printer
    * @throws MoneyFormatException if there is a problem while printing
    */
   def print(appendable: Appendable, moneyProvider: BigMoneyProvider) {
-    printIO(appendable, moneyProvider)
+    try {
+      printIO(appendable, moneyProvider)
+    } catch {
+      case ex: IOException => throw new MoneyFormatException(ex.getMessage(), ex)
+    }
   }
 
   /**
