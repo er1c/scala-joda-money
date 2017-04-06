@@ -9,3 +9,4 @@ shared/src/test/scala/target
 jvm/src/test/scala/target
 js/src/test/scala/target
 test-output
+sonatype.sbt
