@@ -28,7 +28,7 @@ lazy val scalajodamoney = crossProject.in(file(".")).
   jsSettings(
     // Add JS-specific settings here
     libraryDependencies ++= Seq(
-		  "com.github.cquiroz" %%% "scala-java-locales" % "0.3.1-cldr30"
+		  "io.github.cquiroz" %%% "scala-java-locales" % "0.5.0-cldr30"
 		)
   )
 
