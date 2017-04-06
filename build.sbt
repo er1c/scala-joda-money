@@ -1,6 +1,6 @@
 name := "scalajs root project"
-scalaVersion := "2.11.8"
 
+scalaVersion := "2.12.1"
  
 lazy val root = project.in(file(".")).
   aggregate(scalajodamoneyJS, scalajodamoneyJVM).
@@ -15,13 +15,14 @@ lazy val scalajodamoney = crossProject.in(file(".")).
     organization := "com.eluvio",
     version := "0.1-SNAPSHOT",
     publishMavenStyle := true,
-    scalaVersion := "2.11.8"
+    scalaVersion := "2.12.1",
+    parallelExecution in Test := false // TODO: There's some concurrency problem at least in the TestMoneyFormatterBuilder or how the TestNGSuite is setup...
   ).
   jvmSettings(
     // Add JVM-specific settings here
     libraryDependencies ++= Seq(
-      "org.scalatest" %%% "scalatest" % "3.0.0",
-      "org.testng" % "testng" % "6.9.13.6"
+      "org.scalatest" %%% "scalatest" % "3.0.1",
+      "org.testng" % "testng" % "6.11"
     )
   ).
   jsSettings(
